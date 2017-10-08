@@ -2,6 +2,7 @@
 
 **/.vpprefdata/
 *.vpp~*
+*.vpppath
 *.vpp.*
 *.vux
 *.vpp.working
