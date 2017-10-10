@@ -1,62 +1,50 @@
+import java.util.Date;
+
 public class TBook {
+	private int number; //1-a iteracja
+	private TTitle_book mTitle_book; //1-a iteracja
 
-	private int numer;
-	private TTitle_book mTitle_book;
-
-	public TBook() {
-		// TODO - implement TBook.TBook
-		throw new UnsupportedOperationException();
+	public TBook() { //2-a iteracja
 	}
 
-	public Date getPeriod() {
-		// TODO - implement TBook.getPeriod
-		throw new UnsupportedOperationException();
+	public int getNumber() { //2-a iteracja
+		return number;
 	}
 
-	/**
-	 *
-	 * @param period
-	 */
-	public void setPeriod(Date period) {
-		// TODO - implement TBook.setPeriod
-		throw new UnsupportedOperationException();
+	public void setNumber(int number) { //2-a iteracja
+		this.number = number;
 	}
 
-	/**
-	 *
-	 * @param obj
-	 */
-	public boolean equals(Object obj) {
-		// TODO - implement TBook.equals
-		throw new UnsupportedOperationException();
+	public TTitle_book getmTitle_book() { //2-a iteracja
+		return mTitle_book;
 	}
 
-	public String toString() {
-		// TODO - implement TBook.toString
-		throw new UnsupportedOperationException();
+	public void setmTitle_book(TTitle_book mTitle_book) { //2-a iteracja
+		this.mTitle_book = mTitle_book;
 	}
 
-	/**
-	 *
-	 * @param data
-	 */
-	public boolean perlod_pass(Object data) {
-		// TODO - implement TBook.perlod_pass
-		throw new UnsupportedOperationException();
+	@Override
+	public int hashCode() { //2-a iteracja
+		int hash = 0;
+		hash += (number != 0 ? number : 0);
+		return hash;
 	}
 
-	public int hashCode() {
-		// TODO - implement TBook.hashCode
-		throw new UnsupportedOperationException();
+	@Override
+	public boolean equals(Object obj) { //2-a iteracja
+		return number == ((TBook) obj).getNumber();
 	}
 
-	/**
-	 *
-	 * @param data
-	 */
-	public void startPeriod(Object data) {
-		// TODO - implement TBook.startPeriod
-		throw new UnsupportedOperationException();
+	@Override
+	public String toString() //2-a iteracja
+	{
+		String help = mTitle_book.toString();
+		help += " Number: " + getNumber();
+		return help;
 	}
 
+	public Date getPeriod() { //kolejne iteracje
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+	public void setPeriod(Date period) { }
 }
