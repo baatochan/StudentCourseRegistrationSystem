@@ -4,6 +4,7 @@
 *.vpp~*
 *.vpppath
 *.vpp.*
+*.vpd
 *.vux
 *.vpp.working
 *.vpp.working-journal
