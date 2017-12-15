@@ -1,2 +1,4 @@
-public class StudentPanel {
+package MainApp;
+
+public class StudentPanel extends Panel {
 }

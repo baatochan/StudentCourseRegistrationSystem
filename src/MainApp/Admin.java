@@ -1,2 +1,4 @@
-public class Admin {
+package MainApp;
+
+public class Admin extends User {
 }

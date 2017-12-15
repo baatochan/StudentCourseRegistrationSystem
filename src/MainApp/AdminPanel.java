@@ -1,2 +1,4 @@
-public class AdminPanel {
+package MainApp;
+
+public class AdminPanel extends Panel {
 }
