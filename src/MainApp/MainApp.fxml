@@ -10,10 +10,14 @@
    <children>
        <Button layoutX="49.0" layoutY="512.0" onAction="#sayHelloWorld" prefHeight="38.0" prefWidth="127.0" text="Say 'Hello World'" />
        <Label fx:id="helloWorld" />
-      <Button layoutX="272.0" layoutY="332.0" mnemonicParsing="false" text="Zaloguj" />
-      <PasswordField layoutX="226.0" layoutY="281.0" />
-      <TextField layoutX="226.0" layoutY="230.0" />
+
+      <Button fx:id="btn" layoutX="272.0" layoutY="332.0" mnemonicParsing="false" onAction="#loginToProgram" text="Zaloguj" />
+
+      <PasswordField fx:id="passField" layoutX="226.0" layoutY="281.0" onAction="#loginToProgram" />
+      <TextField fx:id="loginField" layoutX="226.0" layoutY="230.0" onAction="#loginToProgram" />
+
       <Label layoutX="286.0" layoutY="206.0" prefHeight="17.0" prefWidth="36.0" text="Login" />
       <Label layoutX="286.0" layoutY="261.0" text="Hasło" />
+      <Label fx:id="checkLogin" layoutX="286.0" layoutY="417.0" />
    </children>
 </Pane>
