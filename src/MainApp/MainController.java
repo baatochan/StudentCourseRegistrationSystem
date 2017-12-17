@@ -13,4 +13,11 @@ public class MainController {
 			helloWorld.setText("");
 		}
 	}
+
+	public void loginToProgram(ActionEvent actionEvent)
+    {
+
+
+    }
+
 }
