@@ -21,9 +21,14 @@ public class MainController {
 
 	public void loginToProgram(ActionEvent actionEvent)
     {
-        String napis;
-        napis = loginField.getText() + passField.getText();
-        checkLogin.setText(napis);
+//        String napis;
+//        napis = loginField.getText() + passField.getText();
+//        checkLogin.setText(napis);
+
+        String login = loginField.getText(); // zmienne do logowania trzeba by je
+        // porównać czy istnieje taki użytkownik następnie sprawdzić czy ma uprawnienia
+        //studenta czy admina i w zależności od uprawnień wywołać odpowiednie okno(admin, student)
+        String pass =passField.getText();
 
 
     }
