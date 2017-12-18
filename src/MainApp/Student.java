@@ -12,10 +12,10 @@ public class Student extends User {
 	private ArrayList<Group> groups = new ArrayList<>();
 	
 	
-	public Student(String Login, String password, String FirstName, String LastName, String email) {
-		super(Login, password);
-		firstName = FirstName;
-		lastNane = LastName;
+	public Student(String login, String password, String firstName, String lastName, String email) {
+		super(login, password);
+		this.firstName = firstName;
+		this.lastNane = lastName;
 		setEmail(email);
 	}
 	
@@ -28,4 +28,6 @@ public class Student extends User {
 	private void setName (String FirstName, String LastNane) {
 	
 	}
+
+
 }
