@@ -1,10 +1,9 @@
 package MainApp;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.Group;
 
 import java.util.ArrayList;
 
@@ -15,11 +14,28 @@ public class Main extends Application {
 	ArrayList<Course> courses = new ArrayList<>();
 	ArrayList<Group> groups = new ArrayList<>();
 
+    public static String screenMainApp = "main";
+    public static String screenMainAppFile = "MainApp.fxml";
+    public static String screenStudentPanel = "screen2";
+    public static String screenStudentPanelFile = "StudentPanel.fxml";
+    public static String screenAdminPanel = "screen3";
+    public static String screenAdminPanelFile = "AdminPanel.fxml";
+
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("MainApp.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 600, 600));
+    public void start(Stage primaryStage) {
+
+        ScreensController mainContainer = new ScreensController();
+        mainContainer.loadScreen(Main.screenMainApp, Main.screenMainAppFile);
+        mainContainer.loadScreen(Main.screenStudentPanel, Main.screenStudentPanelFile);
+        mainContainer.loadScreen(Main.screenAdminPanel, Main.screenAdminPanelFile);
+
+        mainContainer.setScreen(Main.screenMainApp);
+
+        Group root = new Group();
+        root.getChildren().addAll(mainContainer);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

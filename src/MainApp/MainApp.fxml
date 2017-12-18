@@ -19,5 +19,10 @@
       <Label layoutX="286.0" layoutY="206.0" prefHeight="17.0" prefWidth="36.0" text="Login" />
       <Label layoutX="286.0" layoutY="261.0" text="Hasło" />
       <Label fx:id="checkLogin" layoutX="286.0" layoutY="417.0" />
+       <Button layoutX="206.0" layoutY="413.0" mnemonicParsing="false" onAction="#goToScreen2" prefHeight="10.0" prefWidth="58.0" text="Screen2" />
+       <Button layoutX="387.0" layoutY="413.0" mnemonicParsing="false" onAction="#goToScreen3" text="Screen3" />
+
+
    </children>
+    
 </Pane>
