@@ -3,7 +3,14 @@ package MainApp;
 import javafx.stage.Stage;
 
 public class StudentPanel extends Panel {
-	
+
+
+
+
+
+
+
+
 	// wywietlenie okna i ukladu elementow w oknie
 	/*@Override
 	public void start(Stage primaryStage) throws Exception{

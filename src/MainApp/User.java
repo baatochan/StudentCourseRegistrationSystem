@@ -10,36 +10,36 @@ public class User {
 	
 	public User (String login, String password) {
 		this.login = login; // jakis pomysl na cos lepszego?
-        setPassword(password);
+		setPassword(password);
 	}
 	
 	public void setPassword(String password) {
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            // do sth
-        }
-        md.update(password.getBytes());
-        byte[] digest = md.digest();
-        this.password = DatatypeConverter.printHexBinary(digest).toUpperCase();
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// do sth
+		}
+		md.update(password.getBytes());
+		byte[] digest = md.digest();
+		this.password = DatatypeConverter.printHexBinary(digest).toUpperCase();
 	}
 	
 	public boolean checkPassword(String password) {
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            // do sth
-        }
-        md.update(password.getBytes());
-        byte[] digest = md.digest();
-        String hash = DatatypeConverter.printHexBinary(digest).toUpperCase();
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// do sth
+		}
+		md.update(password.getBytes());
+		byte[] digest = md.digest();
+		String hash = DatatypeConverter.printHexBinary(digest).toUpperCase();
 
-        return hash.equals(this.password);
+		return hash.equals(this.password);
 	}
 
-    public String getLogin() {
-        return login;
-    }
+	public String getLogin() {
+		return login;
+	}
 }
