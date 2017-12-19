@@ -4,11 +4,11 @@ import javafx.stage.Stage;
 
 public class StudentPanel extends Panel {
 
+	private Student loggedStudent;
 
-
-
-
-
+	public StudentPanel(String username, Student student) {
+		loggedStudent = student;
+	}
 
 
 	// wywietlenie okna i ukladu elementow w oknie

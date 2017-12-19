@@ -12,8 +12,8 @@ public class Main { //extends Application {
 	private static ArrayList<Course> courses = new ArrayList<>();
 	private static ArrayList<Group> groups = new ArrayList<>();
 
-	BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-	String inputValue;
+	public static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static String inputValue;
 
 	public Main() {
 		Admin root = new Admin("root", "toor", "", "");
@@ -69,11 +69,14 @@ public class Main { //extends Application {
 	public void logIn(String username, String password) {
 		boolean loggedIn = false;
 		String loggedInType = "";
+		Admin loggedAdmin = new Admin("","","","");
+		Student loggedStudent = new Student("", "", "", "", "");
 		for (Admin admin : admins) {
 			if (username.equals(admin.getLogin())) {
 				if (admin.checkPassword(password)) {
 					loggedIn = true;
 					loggedInType = "admin";
+					loggedAdmin = admin;
 				}
 				break;
 			}
@@ -84,6 +87,7 @@ public class Main { //extends Application {
 					if (student.checkPassword(password)) {
 						loggedIn = true;
 						loggedInType = "student";
+						loggedStudent = student;
 					}
 					break;
 				}
@@ -92,9 +96,13 @@ public class Main { //extends Application {
 		if (loggedIn) {
 			switch (loggedInType) {
 				case "admin":
-					//AdminPanel ap = new AdminPanel();
-					//ap.start();
-					System.out.println("Zalogowano admina");
+					AdminPanel ap = new AdminPanel(loggedAdmin);
+                    try {
+                        ap.start();
+                    } catch (IOException e) {
+                        // do sth
+                    }
+                    //System.out.println("Zalogowano admina");
 					break;
 				case "student":
 					//StudentPanel sp = new StudentPanel();
