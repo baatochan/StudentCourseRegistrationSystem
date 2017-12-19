@@ -10,26 +10,36 @@ public class User {
 	
 	public User (String login, String password) {
 		this.login = login; // jakis pomysl na cos lepszego?
-        try {
-            setPassword(password);
-        } catch (Exception e) {
-            // do sth
-        }
+        setPassword(password);
 	}
 	
-	public void setPassword(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
+	public void setPassword(String password) {
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            // do sth
+        }
         md.update(password.getBytes());
         byte[] digest = md.digest();
         this.password = DatatypeConverter.printHexBinary(digest).toUpperCase();
 	}
 	
-	public boolean checkPassword(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
+	public boolean checkPassword(String password) {
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            // do sth
+        }
         md.update(password.getBytes());
         byte[] digest = md.digest();
         String hash = DatatypeConverter.printHexBinary(digest).toUpperCase();
 
-        return hash.equals(password);
+        return hash.equals(this.password);
 	}
+
+    public String getLogin() {
+        return login;
+    }
 }
