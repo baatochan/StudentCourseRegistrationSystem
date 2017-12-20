@@ -14,7 +14,7 @@ public class AdminPanel extends Panel {
 
 	public void start () throws IOException {
 		int chosenMenuPosition;
-		System.out.println("Zalogowano uzytkownika " + loggedAdmin.getLogin() + "jako administartora.");
+		System.out.println("Zalogowano uzytkownika " + loggedAdmin.getLogin() + " jako administartora.");
 		System.out.println("");
 		do {
 			showMenu();
@@ -184,8 +184,27 @@ public class AdminPanel extends Panel {
 		} while (chosenMenuPosition != 0);
 	}
 
-	private void addStudent() {
-
+	private void addStudent() throws IOException {
+		System.out.print("Podaj indeks (login): ");
+		String username = Main.input.readLine();
+		System.out.print("Podaj haslo: ");
+		String password = Main.input.readLine();
+		System.out.print("Powtorz haslo: ");
+		String password2 = Main.input.readLine();
+		if (!(password.equals(password2))) {
+			System.out.print("Podano rozne hasla! Nastepuje przerwanie.");
+			return;
+		}
+		System.out.print("Podaj imie: ");
+		String firstName = Main.input.readLine();
+		System.out.print("Podaj nazwisko: ");
+		String lastName = Main.input.readLine();
+		System.out.print("Podaj email: ");
+		String email = Main.input.readLine();
+		Student s = new Student(username, password, firstName, lastName, email);
+		Main.students.add(s);
+		//TODO: wyszukanie czy student znajduje sie w bazie
+		System.out.print("Dodano studenta.");
 	}
 
 	private void editStudent() {

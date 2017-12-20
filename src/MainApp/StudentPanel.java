@@ -14,7 +14,7 @@ public class StudentPanel extends Panel {
 	
 	public void start() throws IOException {
 		int chosenMenuPosition;
-		System.out.println("Zalogowano uzytkownika " + loggedStudent.getLogin() + "jako administartora.");
+		System.out.println("Zalogowano uzytkownika " + loggedStudent.getLogin() + " jako studenta.");
 		System.out.println("");
 		do {
 			showMenu();

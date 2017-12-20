@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Main { //extends Application {
 
-	private static ArrayList<Admin> admins = new ArrayList<>();
-	private static ArrayList<Student> students = new ArrayList<>();
-	private static ArrayList<Course> courses = new ArrayList<>();
-	private static ArrayList<Group> groups = new ArrayList<>();
+	public static ArrayList<Admin> admins = new ArrayList<>();
+    public static ArrayList<Student> students = new ArrayList<>();
+    public static ArrayList<Course> courses = new ArrayList<>();
+    public static ArrayList<Group> groups = new ArrayList<>();
 
 	public static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 	public static String inputValue;
