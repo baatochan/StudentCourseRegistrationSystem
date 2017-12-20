@@ -150,4 +150,11 @@ public class Main { //extends Application {
 		}
 		return null;
 	}
+
+	public static Group findGroup(String groupID) {
+		for(Group group : groups) {
+			if (groupID.equals(group.getGroupID())) return group;
+		}
+		return null;
+	}
 }

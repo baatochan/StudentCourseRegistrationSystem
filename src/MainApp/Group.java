@@ -43,4 +43,19 @@ public class Group {
 	public void setPlace(String place) {
 		this.place = place;
 	}
+
+	public String getGroupID() {
+		return groupID;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public static boolean exists(String groupID) {
+		for (Group group : Main.groups) {
+			if (groupID.equals(group.getGroupID())) return true;
+		}
+		return false;
+	}
 }

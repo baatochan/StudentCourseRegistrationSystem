@@ -110,16 +110,101 @@ public class AdminPanel extends Panel {
 		} while (chosenMenuPosition != 0);
 	}
 
-	private void addGroup() {
-
+	private void addGroup() throws IOException {
+		System.out.print("Podaj ID kursu do ktorego tworzysz grupe: ");
+		String courseID = Main.input.readLine();
+		Course c = Main.findCourse(courseID);
+		if (c == null) {
+			System.out.println("Podany kurs nie istnieje! Nastepuje przerwanie.");
+			return;
+		}
+		System.out.print("Podaj ID grupy: ");
+		String groupID = Main.input.readLine();
+		if (Group.exists(groupID)) {
+			System.out.println("Podana grupa juz istnieje! Nastepuje przerwanie.");
+			return;
+		}
+		System.out.print("Podaj nazwe: ");
+		String name = Main.input.readLine();
+		System.out.print("Podaj prowadzacego: ");
+		String lecturer = Main.input.readLine();
+		System.out.print("Podaj sale: ");
+		String place = Main.input.readLine();
+		System.out.print("Podaj ilosc miejsc: ");
+		String slotsString = Main.input.readLine();
+		int slots = Integer.parseInt(slotsString);
+		Group g = new Group(name, groupID, lecturer, place, slots, c);
+		c.addGroup(g);
+		Main.groups.add(g);
+		System.out.print("Dodano grupe.");
 	}
 
-	private void editGroup() {
-
+	private void editGroup() throws IOException {
+		System.out.print("Podaj ID grupy: ");
+		String groupID = Main.input.readLine();
+		Group g = Main.findGroup(groupID);
+		if (g == null) {
+			System.out.println("Podana grupa nie istnieje.");
+			return;
+		}
+		int chosenMenuPosition;
+		do {
+			System.out.println("Edycja grupy: " + g.getGroupID());
+			System.out.println("");
+			System.out.println("1. Zmien nazwe");
+			System.out.println("2. Zmien prowadzacego");
+			System.out.println("3. Zmien sale");
+			System.out.println("4. Zmien ilosc miejsc");
+			System.out.println("0. Wyjdz");
+			System.out.print("Twoj wybor: ");
+			Main.inputValue = Main.input.readLine();
+			chosenMenuPosition = Integer.parseInt(Main.inputValue);
+			switch (chosenMenuPosition) {
+				case 1:
+					System.out.print("Podaj nowa nazwe: ");
+					String name = Main.input.readLine();
+					g.setName(name);
+					System.out.println("Zmieniono nazwe");
+					break;
+				case 2:
+					System.out.print("Podaj nowa prowadzacego: ");
+					String lecturer = Main.input.readLine();
+					g.setLecturer(lecturer);
+					System.out.println("Zmieniono prowadzacego");
+					break;
+				case 3:
+					System.out.print("Podaj nowa sale: ");
+					String place = Main.input.readLine();
+					g.setPlace(place);
+					System.out.println("Zmieniono sale");
+					break;
+				case 4:
+					System.out.print("Podaj nowa ilosc miejsc: ");
+					String slotsString = Main.input.readLine();
+					int slots = Integer.parseInt(slotsString);
+					g.setSlots(slots);
+					System.out.println("Zmieniono ilosc miejsc");
+					break;
+				case 0:
+					break;
+				default:
+					System.out.println("Bledny wybor!");
+			}
+		} while (chosenMenuPosition != 0);
 	}
 
-	private void removeGroup() {
-
+	private void removeGroup() throws IOException {
+		System.out.print("Podaj ID grupy: ");
+		String groupID = Main.input.readLine();
+		Group g = Main.findGroup(groupID);
+		if (g == null) {
+			System.out.println("Podana grupa nie istnieje.");
+			return;
+		}
+		Course c = g.getCourse();
+		c.removeGroup(g);
+		Main.groups.remove(g);
+		System.out.println("Usunieto grupe");
 	}
 
 	private void manageCourses() throws IOException {
@@ -212,7 +297,7 @@ public class AdminPanel extends Panel {
 			System.out.println("Podany kurs nie istnieje.");
 			return;
 		}
-		Main.students.remove(c);
+		Main.courses.remove(c);
 		System.out.println("Usunieto kurs");
 	}
 
