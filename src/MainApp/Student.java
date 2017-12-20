@@ -9,7 +9,7 @@ public class Student extends User {
 	
 	private String email;
 	
-	private ArrayList<Group> groups = new ArrayList<>();
+	private ArrayList<Group> groups;
 	
 	
 	public Student(String login, String password, String firstName, String lastName, String email) {
@@ -17,6 +17,7 @@ public class Student extends User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		setEmail(email);
+		groups = new ArrayList<>();
 	}
 	
 	// TODO: sprawdzenie czy podany email jest emailem
@@ -37,6 +38,28 @@ public class Student extends User {
 			if (username.equals(student.getLogin())) return true;
 		}
 		return false;
+	}
+
+	public boolean checkIfAddedToAnotherGroupOfThisCourse(Course course) {
+		for (Group group : groups) {
+			if (course == group.getCourse()) return true;
+		}
+		return false;
+	}
+
+	public boolean checkIfMemberOfGroup(Group g){
+		for (Group group : groups) {
+			if (g == group) return true;
+		}
+		return false;
+	}
+
+	public void addGroup(Group group) {
+		groups.add(group);
+	}
+
+	public void removeGroup(Group group) {
+		groups.remove(group);
 	}
 
 

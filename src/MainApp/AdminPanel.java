@@ -73,17 +73,65 @@ public class AdminPanel extends Panel {
 		} while (chosenMenuPosition != 0);
 	}
 
-	private void addStudentToGroup() {
-
+	private void addStudentToGroup() throws IOException {
+		System.out.print("Podaj numer indeksu studenta: ");
+		String index = Main.input.readLine();
+		Student s = Main.findStudent(index);
+		if (s == null) {
+			System.out.println("Podany student nie istnieje.");
+			return;
+		}
+		System.out.print("Podaj ID grupy: ");
+		String groupID = Main.input.readLine();
+		Group g = Main.findGroup(groupID);
+		if (g == null) {
+			System.out.println("Podana grupa nie istnieje.");
+			return;
+		}
+		if(s.checkIfAddedToAnotherGroupOfThisCourse(g.getCourse())) {
+			System.out.println("Student dodany juz do innej grupy tego kursu.");
+			return;
+		}
+		if(g.checkFreeSlots()) {
+			System.out.print("W grupie nie ma miejsc. Czy zapisac ponad stan [Y/n]?");
+			String answer = Main.input.readLine();
+			if (!(answer.equals("Y")) && !(answer.equals("y"))) {
+				System.out.println("Przerwano.");
+				return;
+			}
+		}
+		s.addGroup(g);
+		g.addStudent(s);
+		System.out.println("Zapisano studenta.");
 	}
 
-	private void removeStudentFromGroup() {
-
+	private void removeStudentFromGroup() throws IOException {
+		System.out.print("Podaj numer indeksu studenta: ");
+		String index = Main.input.readLine();
+		Student s = Main.findStudent(index);
+		if (s == null) {
+			System.out.println("Podany student nie istnieje.");
+			return;
+		}
+		System.out.print("Podaj ID grupy: ");
+		String groupID = Main.input.readLine();
+		Group g = Main.findGroup(groupID);
+		if (g == null) {
+			System.out.println("Podana grupa nie istnieje.");
+			return;
+		}
+		if(!s.checkIfMemberOfGroup(g)) {
+			System.out.println("Student nie nalezy do tej grupy.");
+			return;
+		}
+		s.removeGroup(g);
+		g.removeStudent(s);
+		System.out.println("Wypisano studenta.");
 	}
 
 	private void exportData() {
 		System.out.println("NOT YET IMPLEMENTED!");
-	}
+	}//TODO
 
 	private void manageGroups() throws IOException {
 		int chosenMenuPosition;
@@ -429,10 +477,11 @@ public class AdminPanel extends Panel {
 
 	private void showMenu() {
 		System.out.println("MENU:");
-		System.out.println("1. Zarzadzaj studentami");
-		System.out.println("2. Zarzadzaj kursami");
-		System.out.println("3. Zarzadzaj grupami");
+		System.out.println("1. Zarzadzaj studentami");//TODO:dodac wyswietlanie studentow w bazie
+		System.out.println("2. Zarzadzaj kursami");//TODO:dodac wyswietlanie kursow w bazie
+		System.out.println("3. Zarzadzaj grupami");//TODO:dodac wyswietlanie grup w bazie
 		System.out.println("4. Administracyjne zapisy");
+		//TODO:dodac zarzadzanie administratorami
 		System.out.println("5. Eksportuj dane");
 		System.out.println("0. Wyjdz");
 		System.out.println("");

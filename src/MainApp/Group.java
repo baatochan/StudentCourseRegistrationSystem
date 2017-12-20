@@ -58,4 +58,16 @@ public class Group {
 		}
 		return false;
 	}
+
+	public boolean checkFreeSlots() {
+		return slots > students.size();
+	}
+
+	public void addStudent(Student student) {
+		students.add(student);
+	}
+
+	public void removeStudent(Student student) {
+		students.remove(student);
+	}
 }
