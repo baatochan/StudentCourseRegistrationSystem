@@ -147,16 +147,73 @@ public class AdminPanel extends Panel {
 		} while (chosenMenuPosition != 0);
 	}
 
-	private void addCourse() {
-
+	private void addCourse() throws IOException {
+		System.out.print("Podaj ID kursu: ");
+		String courseID = Main.input.readLine();
+		if (Course.exists(courseID)) {
+			System.out.println("Podany kurs juz istnieje! Nastepuje przerwanie.");
+			return;
+		}
+		System.out.print("Podaj nazwe: ");
+		String name = Main.input.readLine();
+		System.out.print("Podaj ECTS: ");
+		String ECTSString = Main.input.readLine();
+		int ECTS = Integer.parseInt(ECTSString);
+		Course c = new Course(name, courseID, ECTS);
+		Main.courses.add(c);
+		System.out.print("Dodano kurs.");
 	}
 
-	private void editCourse() {
-
+	private void editCourse() throws IOException {
+		System.out.print("Podaj ID kursu: ");
+		String courseID = Main.input.readLine();
+		Course c = Main.findCourse(courseID);
+		if (c == null) {
+			System.out.println("Podany kurs nie istnieje.");
+			return;
+		}
+		int chosenMenuPosition;
+		do {
+			System.out.println("Edycja kursu: " + c.getCourseID());
+			System.out.println("");
+			System.out.println("1. Zmien nazwe");
+			System.out.println("2. Zmien ilosc ECTS");
+			System.out.println("0. Wyjdz");
+			System.out.print("Twoj wybor: ");
+			Main.inputValue = Main.input.readLine();
+			chosenMenuPosition = Integer.parseInt(Main.inputValue);
+			switch (chosenMenuPosition) {
+				case 1:
+					System.out.print("Podaj nowa nazwe: ");
+					String name = Main.input.readLine();
+					c.setName(name);
+					System.out.println("Zmieniono nazwe");
+					break;
+				case 2:
+					System.out.print("Podaj nowa ilosc ECTS: ");
+					String ECTSString = Main.input.readLine();
+					int ECTS = Integer.parseInt(ECTSString);
+					c.setECTS(ECTS);
+					System.out.println("Zmieniono ilosc ECTS");
+					break;
+				case 0:
+					break;
+				default:
+					System.out.println("Bledny wybor!");
+			}
+		} while (chosenMenuPosition != 0);
 	}
 
-	private void removeCourse() {
-
+	private void removeCourse() throws IOException {
+		System.out.print("Podaj ID kursu: ");
+		String courseID = Main.input.readLine();
+		Course c = Main.findCourse(courseID);
+		if (c == null) {
+			System.out.println("Podany kurs nie istnieje.");
+			return;
+		}
+		Main.students.remove(c);
+		System.out.println("Usunieto kurs");
 	}
 
 	private void manageStudents() throws IOException {
@@ -196,7 +253,7 @@ public class AdminPanel extends Panel {
 		System.out.print("Powtorz haslo: ");
 		String password2 = Main.input.readLine();
 		if (!(password.equals(password2))) {
-			System.out.print("Podano rozne hasla! Nastepuje przerwanie.");
+			System.out.println("Podano rozne hasla! Nastepuje przerwanie.");
 			return;
 		}
 		System.out.print("Podaj imie: ");
@@ -235,21 +292,25 @@ public class AdminPanel extends Panel {
 					System.out.print("Podaj nowe haslo: ");
 					String password = Main.input.readLine();
 					s.setPassword(password);
+					System.out.println("Zmieniono haslo");
 					break;
 				case 2:
 					System.out.print("Podaj nowe imie: ");
 					String firstName = Main.input.readLine();
 					s.setFirstName(firstName);
+					System.out.println("Zmieniono imie");
 					break;
 				case 3:
 					System.out.print("Podaj nowe nazwisko: ");
 					String lastName = Main.input.readLine();
 					s.setLastName(lastName);
+					System.out.println("Zmieniono nazwisko");
 					break;
 				case 4:
 					System.out.print("Podaj nowy email: ");
 					String email = Main.input.readLine();
 					s.setEmail(email);
+					System.out.println("Zmieniono email");
 					break;
 				case 0:
 					break;
@@ -268,6 +329,7 @@ public class AdminPanel extends Panel {
 			return;
 		}
 		Main.students.remove(s);
+		System.out.println("Usunieto studenta");
 	}
 
 	private void showAddEditRemoveMenu(String info) {

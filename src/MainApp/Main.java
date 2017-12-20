@@ -143,4 +143,11 @@ public class Main { //extends Application {
 			// do sth
 		}
 	}
+
+	public static Course findCourse(String courseID) {
+		for(Course course : courses) {
+			if (courseID.equals(course.getCourseID())) return course;
+		}
+		return null;
+	}
 }

@@ -8,16 +8,19 @@ public class Group {
 	private String lecturer;
 	private String place;
 
+	private Course course;
+
 	private int slots;
 
 	private ArrayList<Student> students;
 
-	public Group(String name, String groupID, String lecturer, String place, int slots) {
+	public Group(String name, String groupID, String lecturer, String place, int slots, Course course) {
 		this.name = name;
 		this.groupID = groupID;
 		this.lecturer = lecturer;
 		this.place = place;
 		this.slots = slots;
+		this.course = course;
 		this.students = new ArrayList<>();
 	}
 

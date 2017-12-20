@@ -28,4 +28,15 @@ public class Course {
 	public void setECTS(int ECTS) {
 		this.ECTS = ECTS;
 	}
+
+	public String getCourseID() {
+		return courseID;
+	}
+
+	public static boolean exists(String courseID) {
+		for (Course course : Main.courses) {
+			if (courseID.equals(course.getCourseID())) return true;
+		}
+		return false;
+	}
 }
