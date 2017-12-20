@@ -62,5 +62,7 @@ public class Student extends User {
 		groups.remove(group);
 	}
 
-
+	public ArrayList<Group> getGroups() {
+		return groups;
+	}
 }

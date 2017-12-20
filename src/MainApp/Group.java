@@ -63,11 +63,45 @@ public class Group {
 		return slots > students.size();
 	}
 
+	public int calculateFreeSlots() {
+		return slots - students.size();
+	}
+
 	public void addStudent(Student student) {
 		students.add(student);
 	}
 
 	public void removeStudent(Student student) {
 		students.remove(student);
+	}
+
+	@Override
+	public String toString(){
+		StringBuilder output = new StringBuilder();
+		output.append(groupID);
+		for (int i = 0; i<(7-groupID.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(name);
+		for (int i = 0; i<(28-name.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(lecturer);
+		for (int i = 0; i<(25-lecturer.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(place);
+		for (int i = 0; i<(9-place.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(calculateFreeSlots());
+		output.append("/");
+		output.append(slots);
+		output.append("|");
+		return output.toString();
 	}
 }

@@ -44,19 +44,55 @@ public class StudentPanel extends Panel {
 	}
 
 	private void printMyGroups() {
-
+		System.out.println("ID     |Nazwa                       |Prowadzacy               |Sala     |Miejsca");
+		for (Group g : loggedStudent.getGroups()) {
+			System.out.println(g.toString());
+		}
 	}
 
-	private void removeFromGroup() {
-
+	private void removeFromGroup() throws IOException {
+		System.out.print("Podaj ID grupy: ");
+		String groupID = Main.input.readLine();
+		Group g = Main.findGroup(groupID);
+		if (g == null) {
+			System.out.println("Podana grupa nie istnieje.");
+			return;
+		}
+		if(!loggedStudent.checkIfMemberOfGroup(g)) {
+			System.out.println("Nie nalezyz do tej grupy.");
+			return;
+		}
+		loggedStudent.removeGroup(g);
+		g.removeStudent(loggedStudent);
+		System.out.println("Wypisano.");
 	}
 
-	private void addToGroup() {
-
+	private void addToGroup() throws IOException {
+		System.out.print("Podaj ID grupy: ");
+		String groupID = Main.input.readLine();
+		Group g = Main.findGroup(groupID);
+		if (g == null) {
+			System.out.println("Podana grupa nie istnieje.");
+			return;
+		}
+		if(loggedStudent.checkIfAddedToAnotherGroupOfThisCourse(g.getCourse())) {
+			System.out.println("Student dodany juz do innej grupy tego kursu.");
+			return;
+		}
+		if(g.checkFreeSlots()) {
+			System.out.print("W grupie nie ma miejsc.");
+			return;
+		}
+		loggedStudent.addGroup(g);
+		g.addStudent(loggedStudent);
+		System.out.println("Zapisano.");
 	}
 
 	private void printGroups() {
-
+		System.out.println("ID     |Nazwa                       |Prowadzacy               |Sala     |Miejsca");
+		for (Group g : Main.groups) {
+			System.out.println(g.toString());
+		}
 	}
 
 	private void showMenu() {
