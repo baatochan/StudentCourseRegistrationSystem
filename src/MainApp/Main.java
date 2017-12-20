@@ -121,6 +121,13 @@ public class Main { //extends Application {
 		}
 	}
 
+	public static Student findStudent(String username) {
+		for(Student student : students) {
+			if (username.equals(student.getLogin())) return student;
+		}
+		return null;
+	}
+
 	// do ladowania z pliku bazy studentow, kursow, grup, kont admina, itd.
 	public void loadData() {
 		System.out.println("NOT YET IMPLEMENTED!");

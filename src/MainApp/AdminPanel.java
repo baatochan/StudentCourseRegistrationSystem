@@ -187,6 +187,10 @@ public class AdminPanel extends Panel {
 	private void addStudent() throws IOException {
 		System.out.print("Podaj indeks (login): ");
 		String username = Main.input.readLine();
+		if (Student.exists(username)) {
+			System.out.println("Podany student juz istnieje! Nastepuje przerwanie.");
+			return;
+		}
 		System.out.print("Podaj haslo: ");
 		String password = Main.input.readLine();
 		System.out.print("Powtorz haslo: ");
@@ -203,16 +207,67 @@ public class AdminPanel extends Panel {
 		String email = Main.input.readLine();
 		Student s = new Student(username, password, firstName, lastName, email);
 		Main.students.add(s);
-		//TODO: wyszukanie czy student znajduje sie w bazie
 		System.out.print("Dodano studenta.");
 	}
 
-	private void editStudent() {
-
+	private void editStudent() throws IOException {
+		System.out.print("Podaj indeks (login): ");
+		String username = Main.input.readLine();
+		Student s = Main.findStudent(username);
+		if (s == null) {
+			System.out.println("Podany student nie istnieje.");
+			return;
+		}
+		int chosenMenuPosition;
+		do {
+			System.out.println("Edycja studenta: " + s.getLogin());
+			System.out.println("");
+			System.out.println("1. Zmien haslo");
+			System.out.println("2. Zmien imie");
+			System.out.println("3. Zmien nazwisko");
+			System.out.println("4. Zmien adres email");
+			System.out.println("0. Wyjdz");
+			System.out.print("Twoj wybor: ");
+			Main.inputValue = Main.input.readLine();
+			chosenMenuPosition = Integer.parseInt(Main.inputValue);
+			switch (chosenMenuPosition) {
+				case 1:
+					System.out.print("Podaj nowe haslo: ");
+					String password = Main.input.readLine();
+					s.setPassword(password);
+					break;
+				case 2:
+					System.out.print("Podaj nowe imie: ");
+					String firstName = Main.input.readLine();
+					s.setFirstName(firstName);
+					break;
+				case 3:
+					System.out.print("Podaj nowe nazwisko: ");
+					String lastName = Main.input.readLine();
+					s.setLastName(lastName);
+					break;
+				case 4:
+					System.out.print("Podaj nowy email: ");
+					String email = Main.input.readLine();
+					s.setEmail(email);
+					break;
+				case 0:
+					break;
+				default:
+					System.out.println("Bledny wybor!");
+			}
+		} while (chosenMenuPosition != 0);
 	}
 
-	private void removeStudent() {
-
+	private void removeStudent() throws IOException {
+		System.out.print("Podaj indeks (login): ");
+		String username = Main.input.readLine();
+		Student s = Main.findStudent(username);
+		if (s == null) {
+			System.out.println("Podany student nie istnieje.");
+			return;
+		}
+		Main.students.remove(s);
 	}
 
 	private void showAddEditRemoveMenu(String info) {

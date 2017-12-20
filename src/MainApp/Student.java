@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Student extends User {
 	
 	private String firstName;
-	private String lastNane;
+	private String lastName;
 	
 	private String email;
 	
@@ -15,18 +15,28 @@ public class Student extends User {
 	public Student(String login, String password, String firstName, String lastName, String email) {
 		super(login, password);
 		this.firstName = firstName;
-		this.lastNane = lastName;
+		this.lastName = lastName;
 		setEmail(email);
 	}
 	
-	// sprawdzenie czy podany email jest emailem
-	private void setEmail(String Email) {
-	
+	// TODO: sprawdzenie czy podany email jest emailem
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	// nw czy jest sens to dzielic, moze?
-	private void setName (String FirstName, String LastNane) {
-	
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public static boolean exists(String username) {
+		for (Student student : Main.students) {
+			if (username.equals(student.getLogin())) return true;
+		}
+		return false;
 	}
 
 
