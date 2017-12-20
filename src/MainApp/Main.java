@@ -105,9 +105,13 @@ public class Main { //extends Application {
                     //System.out.println("Zalogowano admina");
 					break;
 				case "student":
-					//StudentPanel sp = new StudentPanel();
-					//sp.start();
-					break;
+					StudentPanel sp = new StudentPanel(loggedStudent);
+                    try {
+                        sp.start();
+                    } catch (IOException e) {
+                        // do sth
+                    }
+                    break;
 				default:
 					System.out.println("Wystapil blad...");
 					return;
