@@ -17,11 +17,7 @@ public class MainController  implements Initializable , ControlledScreen {
 	public PasswordField passField;
 	public TextField loginField;
 	public Button btn;
-
 	private ScreensController myController;
-	/**
-	 * Initializes the controller class.
-	 */
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -61,9 +57,10 @@ public class MainController  implements Initializable , ControlledScreen {
         //studenta czy admina i w zależności od uprawnień wywołać odpowiednie okno(admin, student)
         String pass =passField.getText();
 
-        StudentPanel studentPanel = new StudentPanel();
-        //studentPanel;
-
+		// jeśli jest to student to uruchamiamy to okienko
+		// myController.setScreen(Main.screenStudentPanel);
+		// jeśli admin to to okenko
+		// myController.setScreen(Main.screenAdminPanel);
 
     }
 

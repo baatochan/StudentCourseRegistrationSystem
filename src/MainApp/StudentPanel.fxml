@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="MainApp.StudentPanel"
-            prefHeight="400.0" prefWidth="600.0">
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainApp.StudentPanel">
 <children>
-    <VBox alignment="CENTER" prefHeight="174.0" prefWidth="135.9998779296875" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <children>
-            <Label text="Screen 2">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Label>
-            <Button mnemonicParsing="false" onAction="#goToScreen1" text="Go to Screen1" />
-            <Button mnemonicParsing="false" onAction="#goToScreen3" text="Go To Screen3" />
-        </children>
-    </VBox>
+      <Button layoutX="477.0" layoutY="52.0" mnemonicParsing="false" onAction="#goToScreen1" text="Panel Logowania" />
+      <Button layoutX="485.0" layoutY="88.0" mnemonicParsing="false" onAction="#goToScreen3" text="Panel Admina" />
+      <Label layoutX="454.0" layoutY="14.0" prefHeight="27.0" prefWidth="132.0" text="Panel Studenta">
+          <font>
+              <Font size="18.0" />
+          </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="19.0" prefHeight="17.0" prefWidth="150.0" text="Dostępne Grupy zajęciowe:" />
+      <Button layoutX="182.0" layoutY="15.0" mnemonicParsing="false" text="Wyświetl" />
+      <TableView fx:id="listOfAvailableGroupCourse" layoutX="32.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Id_kursu" />
+        </columns>
+      </TableView>
 </children>
-</AnchorPane>
+</Pane>

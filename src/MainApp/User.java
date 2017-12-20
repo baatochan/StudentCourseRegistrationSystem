@@ -5,7 +5,7 @@ public class User {
 	private String password; //hashed
 	
 	public User (String Login, String password) {
-		login = Login; // jakis pomysl na cos lepszego?
+		login = Login; // jakis pomysl na cos lepszego? -> nie
 		changePassword(password);
 	}
 	

@@ -10,9 +10,6 @@ public class AdminPanel implements Initializable, ControlledScreen {
 
     ScreensController myController;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

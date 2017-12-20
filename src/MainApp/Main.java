@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends Application {
 	
@@ -22,8 +23,11 @@ public class Main extends Application {
     public static String screenAdminPanelFile = "AdminPanel.fxml";
 
 
+
+
     @Override
     public void start(Stage primaryStage) {
+
 
         ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(Main.screenMainApp, Main.screenMainAppFile);
@@ -51,8 +55,11 @@ public class Main extends Application {
 	
 	
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
+
         launch(args);
+
+
     }
 }
