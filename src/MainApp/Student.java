@@ -29,8 +29,8 @@ public class Student extends User {
 		this.firstName = firstName;
 	}
 
-	public void setLastName(String firstName) {
-		this.firstName = firstName;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public static boolean exists(String username) {
