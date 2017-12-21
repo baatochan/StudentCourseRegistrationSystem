@@ -79,7 +79,7 @@ public class StudentPanel extends Panel {
 			System.out.println("Student dodany juz do innej grupy tego kursu.");
 			return;
 		}
-		if(g.checkFreeSlots()) {
+		if(!(g.checkFreeSlots())) {
 			System.out.print("W grupie nie ma miejsc.");
 			return;
 		}

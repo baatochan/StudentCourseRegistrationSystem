@@ -98,7 +98,7 @@ public class Group {
 			output.append(" ");
 		}
 		output.append("|");
-		output.append(calculateFreeSlots());
+		output.append(students.size());
 		output.append("/");
 		output.append(slots);
 		output.append("|");
