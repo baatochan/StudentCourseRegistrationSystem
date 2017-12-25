@@ -1,8 +1,6 @@
 package MainApp;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -38,7 +36,11 @@ public class Main {
 					logIn(username, password);
 					break;
 				case 2:
-					loadData();
+					try {
+						loadData();
+					} catch (Exception e) {
+						// do sth
+					}
 					break;
 				case 0:
 					System.out.println("Zegnaj!");
@@ -121,9 +123,24 @@ public class Main {
 	}
 
 	// do ladowania z pliku bazy studentow, kursow, grup, kont admina, itd.
-	public void loadData() {
-		System.out.println("NOT YET IMPLEMENTED!");
-	}//TODO
+	public void loadData() throws IOException, ClassNotFoundException {
+		FileInputStream fosAdmins = new FileInputStream("admins.bak");
+		ObjectInputStream oosAdmins = new ObjectInputStream(fosAdmins);
+		admins = (ArrayList<Admin>) oosAdmins.readObject();
+		oosAdmins.close();
+		FileInputStream fosStudents = new FileInputStream("students.bak");
+		ObjectInputStream oosStudents = new ObjectInputStream(fosStudents);
+		students = (ArrayList<Student>) oosStudents.readObject();
+		oosStudents.close();
+		FileInputStream fosCourses = new FileInputStream("courses.bak");
+		ObjectInputStream oosCourses = new ObjectInputStream(fosCourses);
+		courses = (ArrayList<Course>) oosCourses.readObject();
+		oosCourses.close();
+		FileInputStream fosGroups = new FileInputStream("groups.bak");
+		ObjectInputStream oosGroups = new ObjectInputStream(fosGroups);
+		groups = (ArrayList<Group>) oosGroups.readObject();
+		oosGroups.close();
+	}
 
 
 	public static void main(String[] args) {

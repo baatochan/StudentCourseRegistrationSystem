@@ -1,6 +1,8 @@
 package MainApp;
 
-public class Admin extends User {
+import java.io.Serializable;
+
+public class Admin extends User implements Serializable {
 
 	private String firstName;
 	private String lastName;

@@ -1,6 +1,9 @@
 package MainApp;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class AdminPanel extends Panel {
 
@@ -22,19 +25,19 @@ public class AdminPanel extends Panel {
 			chosenMenuPosition = Integer.parseInt(Main.inputValue);
 			switch (chosenMenuPosition) {
 				case 1:
-					manageStudents();
+					manageAdmins();
 					break;
 				case 2:
-					manageCourses();
+					manageStudents();
 					break;
 				case 3:
-					manageGroups();
+					manageCourses();
 					break;
 				case 4:
-					studentEnrollment();
+					manageGroups();
 					break;
 				case 5:
-					manageAdmins();
+					studentEnrollment();
 					break;
 				case 6:
 					exportData();
@@ -238,9 +241,24 @@ public class AdminPanel extends Panel {
 		System.out.println("Wypisano studenta.");
 	}
 
-	private void exportData() {
-		System.out.println("NOT YET IMPLEMENTED!");
-	}//TODO
+	private void exportData() throws IOException {
+		FileOutputStream fosAdmins = new FileOutputStream("admins.bak");
+		ObjectOutputStream oosAdmins = new ObjectOutputStream(fosAdmins);
+		oosAdmins.writeObject(Main.admins);
+		oosAdmins.close();
+		FileOutputStream fosStudents = new FileOutputStream("students.bak");
+		ObjectOutputStream oosStudents = new ObjectOutputStream(fosStudents);
+		oosStudents.writeObject(Main.students);
+		oosStudents.close();
+		FileOutputStream fosCourses = new FileOutputStream("courses.bak");
+		ObjectOutputStream oosCourses = new ObjectOutputStream(fosCourses);
+		oosCourses.writeObject(Main.courses);
+		oosCourses.close();
+		FileOutputStream fosGroups = new FileOutputStream("groups.bak");
+		ObjectOutputStream oosGroups = new ObjectOutputStream(fosGroups);
+		oosGroups.writeObject(Main.groups);
+		oosGroups.close();
+	}
 
 	private void manageGroups() throws IOException {
 		int chosenMenuPosition;
@@ -587,12 +605,11 @@ public class AdminPanel extends Panel {
 	@Override
 	void showMenu() {
 		System.out.println("MENU:");
-		System.out.println("1. Zarzadzaj studentami");//TODO:dodac wyswietlanie studentow w bazie
-		System.out.println("2. Zarzadzaj kursami");//TODO:dodac wyswietlanie kursow w bazie
-		System.out.println("3. Zarzadzaj grupami");//TODO:dodac wyswietlanie grup w bazie
-		System.out.println("4. Administracyjne zapisy");
-		System.out.println("5. Zarzadzanie administartorami");
-		//TODO:dodac zarzadzanie administratorami
+		System.out.println("1. Zarzadzanie administartorami");
+		System.out.println("2. Zarzadzaj studentami");//TODO:dodac wyswietlanie studentow w bazie
+		System.out.println("3. Zarzadzaj kursami");//TODO:dodac wyswietlanie kursow w bazie
+		System.out.println("4. Zarzadzaj grupami");//TODO:dodac wyswietlanie grup w bazie
+		System.out.println("5. Administracyjne zapisy");
 		System.out.println("6. Eksportuj dane");
 		System.out.println("0. Wyjdz");
 		System.out.println("");

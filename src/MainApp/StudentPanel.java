@@ -101,6 +101,7 @@ public class StudentPanel extends Panel {
 		System.out.println("2. Zapis do grupy");
 		System.out.println("3. Wypis z grupy");
 		System.out.println("4. Grupy do ktorych jestem zapisany");
+		//TODO: Zmiana hasla
 		System.out.println("0. Wyjdz");
 		System.out.println("");
 	}
