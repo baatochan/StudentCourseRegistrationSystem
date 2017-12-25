@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Main { //extends Application {
+public class Main {
 
 	public static ArrayList<Admin> admins = new ArrayList<>();
     public static ArrayList<Student> students = new ArrayList<>();
@@ -19,14 +19,6 @@ public class Main { //extends Application {
 		Admin root = new Admin("root", "toor", "", "");
 		admins.add(root);
 	}
-
-	/*@Override
-	public void start(Stage primaryStage) throws Exception{
-		Parent root = FXMLLoader.load(getClass().getResource("MainApp.fxml"));
-		primaryStage.setTitle("Hello World");
-		primaryStage.setScene(new Scene(root, 300, 275));
-		primaryStage.show();
-	}*/
 
 	public void start() throws IOException {
 		int chosenMenuPosition;

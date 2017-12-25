@@ -1,7 +1,5 @@
 package MainApp;
 
-import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class StudentPanel extends Panel {
@@ -11,8 +9,9 @@ public class StudentPanel extends Panel {
 	public StudentPanel(Student student) {
 		loggedStudent = student;
 	}
-	
-	public void start() throws IOException {
+
+	@Override
+	void start() throws IOException {
 		int chosenMenuPosition;
 		System.out.println("Zalogowano uzytkownika " + loggedStudent.getLogin() + " jako studenta.");
 		System.out.println("");
@@ -95,7 +94,8 @@ public class StudentPanel extends Panel {
 		}
 	}
 
-	private void showMenu() {
+	@Override
+	void showMenu() {
 		System.out.println("MENU:");
 		System.out.println("1. Wyswietl dostepne grupy");
 		System.out.println("2. Zapis do grupy");
@@ -105,12 +105,4 @@ public class StudentPanel extends Panel {
 		System.out.println("");
 	}
 
-
-	// wywietlenie okna i ukladu elementow w oknie
-	/*@Override
-	public void start(Stage primaryStage) throws Exception{
-	
-	}*/
-	
-	// funkcje odpawiadajace na kliknecia na obiekty w oknie
 }
