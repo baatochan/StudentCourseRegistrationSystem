@@ -47,4 +47,5 @@ public class Course {
 	public void removeGroup(Group group) {
 		groups.remove(group);
 	}
+
 }

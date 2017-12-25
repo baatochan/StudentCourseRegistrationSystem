@@ -104,4 +104,9 @@ public class Group {
 		output.append("|");
 		return output.toString();
 	}
+
+	public static void printHeader() {
+		System.out.println("  ID   |           Nazwa            |       Prowadzacy        |  Sala   |Miejsca");
+	}
+	
 }

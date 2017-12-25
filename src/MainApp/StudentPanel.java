@@ -43,7 +43,7 @@ public class StudentPanel extends Panel {
 	}
 
 	private void printMyGroups() {
-		System.out.println("ID     |Nazwa                       |Prowadzacy               |Sala     |Miejsca");
+		Group.printHeader();
 		for (Group g : loggedStudent.getGroups()) {
 			System.out.println(g.toString());
 		}
@@ -88,7 +88,7 @@ public class StudentPanel extends Panel {
 	}
 
 	private void printGroups() {
-		System.out.println("ID     |Nazwa                       |Prowadzacy               |Sala     |Miejsca");
+		Group.printHeader();
 		for (Group g : Main.groups) {
 			System.out.println(g.toString());
 		}

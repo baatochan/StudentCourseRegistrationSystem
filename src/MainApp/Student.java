@@ -65,4 +65,5 @@ public class Student extends User {
 	public ArrayList<Group> getGroups() {
 		return groups;
 	}
+
 }
