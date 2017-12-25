@@ -34,6 +34,9 @@ public class AdminPanel extends Panel {
 					studentEnrollment();
 					break;
 				case 5:
+					manageAdmins();
+					break;
+				case 6:
 					exportData();
 					break;
 				case 0:
@@ -43,6 +46,113 @@ public class AdminPanel extends Panel {
 					System.out.println("Bledny wybor!");
 			}
 		} while (chosenMenuPosition != 0);
+	}
+
+	private void manageAdmins() throws IOException {
+		int chosenMenuPosition;
+		do {
+			showAddEditRemoveMenu("Zarzdzanie administartorami");
+			System.out.print("Twoj wybor: ");
+			Main.inputValue = Main.input.readLine();
+			chosenMenuPosition = Integer.parseInt(Main.inputValue);
+			switch (chosenMenuPosition) {
+				case 1:
+					addAdmin();
+					break;
+				case 2:
+					editAdmin();
+					break;
+				case 3:
+					removeAdmin();
+					break;
+				case 0:
+					break;
+				default:
+					System.out.println("Bledny wybor!");
+			}
+		} while (chosenMenuPosition != 0);
+	}
+
+	private void removeAdmin() throws IOException {
+		System.out.print("Podaj login: ");
+		String username = Main.input.readLine();
+		Admin a = Main.findAdmin(username);
+		if (a == null) {
+			System.out.println("Podany uzytkownik nie istnieje.");
+			return;
+		}
+		Main.admins.remove(a);
+		System.out.println("Usunieto uzytkownika");
+	}
+
+	private void editAdmin() throws IOException {
+		System.out.print("Podaj login: ");
+		String username = Main.input.readLine();
+		Admin a = Main.findAdmin(username);
+		if (a == null) {
+			System.out.println("Podany uzytkownik nie istnieje.");
+			return;
+		}
+		int chosenMenuPosition;
+		do {
+			System.out.println("Edycja uzytkownika: " + a.getLogin());
+			System.out.println("");
+			System.out.println("1. Zmien haslo");
+			System.out.println("2. Zmien imie");
+			System.out.println("3. Zmien nazwisko");
+			System.out.println("0. Wyjdz");
+			System.out.print("Twoj wybor: ");
+			Main.inputValue = Main.input.readLine();
+			chosenMenuPosition = Integer.parseInt(Main.inputValue);
+			switch (chosenMenuPosition) {
+				case 1:
+					System.out.print("Podaj nowe haslo: ");
+					String password = Main.input.readLine();
+					a.setPassword(password);
+					System.out.println("Zmieniono haslo");
+					break;
+				case 2:
+					System.out.print("Podaj nowe imie: ");
+					String firstName = Main.input.readLine();
+					a.setFirstName(firstName);
+					System.out.println("Zmieniono imie");
+					break;
+				case 3:
+					System.out.print("Podaj nowe nazwisko: ");
+					String lastName = Main.input.readLine();
+					a.setLastName(lastName);
+					System.out.println("Zmieniono nazwisko");
+					break;
+				case 0:
+					break;
+				default:
+					System.out.println("Bledny wybor!");
+			}
+		} while (chosenMenuPosition != 0);
+	}
+
+	private void addAdmin() throws IOException {
+		System.out.print("Podaj login: ");
+		String username = Main.input.readLine();
+		if (Admin.exists(username)) {
+			System.out.println("Podany uzytkownik juz istnieje! Nastepuje przerwanie.");
+			return;
+		}
+		System.out.print("Podaj haslo: ");
+		String password = Main.input.readLine();
+		System.out.print("Powtorz haslo: ");
+		String password2 = Main.input.readLine();
+		if (!(password.equals(password2))) {
+			System.out.println("Podano rozne hasla! Nastepuje przerwanie.");
+			return;
+		}
+		System.out.print("Podaj imie: ");
+		String firstName = Main.input.readLine();
+		System.out.print("Podaj nazwisko: ");
+		String lastName = Main.input.readLine();
+		Admin a = new Admin(username, password, firstName, lastName);
+		Main.admins.add(a);
+		System.out.print("Dodano uzytkownika.");
 	}
 
 	private void studentEnrollment() throws IOException {
@@ -481,8 +591,9 @@ public class AdminPanel extends Panel {
 		System.out.println("2. Zarzadzaj kursami");//TODO:dodac wyswietlanie kursow w bazie
 		System.out.println("3. Zarzadzaj grupami");//TODO:dodac wyswietlanie grup w bazie
 		System.out.println("4. Administracyjne zapisy");
+		System.out.println("5. Zarzadzanie administartorami");
 		//TODO:dodac zarzadzanie administratorami
-		System.out.println("5. Eksportuj dane");
+		System.out.println("6. Eksportuj dane");
 		System.out.println("0. Wyjdz");
 		System.out.println("");
 	}

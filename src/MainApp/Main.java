@@ -150,4 +150,10 @@ public class Main {
 		return null;
 	}
 
+	public static Admin findAdmin(String username) {
+		for(Admin admin : admins) {
+			if (username.equals(admin.getLogin())) return admin;
+		}
+		return null;
+	}
 }
