@@ -1,7 +1,37 @@
 package MainApp;
 
-import javafx.stage.Stage;
+import java.io.IOException;
 
-public class Panel extends Main { // nw czy na pewno Maina czy nie lepiej po prostu Application
-	//nw czy cokolwiek tu bedzie, czy w ogole ta klasa pozostanie
+abstract class Panel {
+	abstract void start() throws IOException;
+
+	abstract void showMenu();
+
+	void printGroups() {
+		Group.printHeader();
+		for (Group g : Main.groups) {
+			System.out.println(g.print());
+		}
+	}
+
+	void printCourses() {
+		Course.printHeader();
+		for (Course c : Main.courses) {
+			System.out.println(c.print());
+		}
+	}
+
+	void printAdmins() {
+		Admin.printHeader();
+		for (Admin a : Main.admins) {
+			System.out.println(a.print());
+		}
+	}
+
+	void printStudents() {
+		Student.printHeader();
+		for (Student s : Main.students) {
+			System.out.println(s.print());
+		}
+	}
 }

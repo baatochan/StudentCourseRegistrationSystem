@@ -1,19 +1,46 @@
 package MainApp;
 
-public class User {
+import javax.xml.bind.DatatypeConverter;
+import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class User implements Serializable {
 	private String login;
 	private String password; //hashed
 	
-	public User (String Login, String password) {
-		login = Login; // jakis pomysl na cos lepszego?
-		changePassword(password);
+	public User (String login, String password) {
+		this.login = login; // jakis pomysl na cos lepszego?
+		setPassword(password);
 	}
 	
-	public void changePassword(String newPassword) {
-	
+	public void setPassword(String password) {
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// do sth
+		}
+		md.update(password.getBytes());
+		byte[] digest = md.digest();
+		this.password = DatatypeConverter.printHexBinary(digest).toUpperCase();
 	}
 	
 	public boolean checkPassword(String password) {
-		return false;
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// do sth
+		}
+		md.update(password.getBytes());
+		byte[] digest = md.digest();
+		String hash = DatatypeConverter.printHexBinary(digest).toUpperCase();
+
+		return hash.equals(this.password);
+	}
+
+	public String getLogin() {
+		return login;
 	}
 }
