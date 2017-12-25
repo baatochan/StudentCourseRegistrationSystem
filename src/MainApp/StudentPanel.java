@@ -33,6 +33,9 @@ public class StudentPanel extends Panel {
 				case 4:
 					printMyGroups();
 					break;
+				case 5:
+					changeMyPassword();
+					break;
 				case 0:
 					System.out.println("Zegnaj!");
 					break;
@@ -40,6 +43,19 @@ public class StudentPanel extends Panel {
 					System.out.println("Bledny wybor!");
 			}
 		} while (chosenMenuPosition != 0);
+	}
+
+	private void changeMyPassword() throws IOException {
+		System.out.print("Podaj nowe haslo: ");
+		String password = Main.input.readLine();
+		System.out.print("Powtorz haslo: ");
+		String password2 = Main.input.readLine();
+		if (!(password.equals(password2))) {
+			System.out.println("Podano rozne hasla! Nastepuje przerwanie.");
+			return;
+		}
+		loggedStudent.setPassword(password);
+		System.out.println("Zmieniono haslo");
 	}
 
 	private void printMyGroups() {
@@ -87,13 +103,6 @@ public class StudentPanel extends Panel {
 		System.out.println("Zapisano.");
 	}
 
-	private void printGroups() {
-		Group.printHeader();
-		for (Group g : Main.groups) {
-			System.out.println(g.toString());
-		}
-	}
-
 	@Override
 	void showMenu() {
 		System.out.println("MENU:");
@@ -101,7 +110,7 @@ public class StudentPanel extends Panel {
 		System.out.println("2. Zapis do grupy");
 		System.out.println("3. Wypis z grupy");
 		System.out.println("4. Grupy do ktorych jestem zapisany");
-		//TODO: Zmiana hasla
+		System.out.println("5. Zmiana hasla");
 		System.out.println("0. Wyjdz");
 		System.out.println("");
 	}

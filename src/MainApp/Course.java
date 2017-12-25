@@ -49,4 +49,30 @@ public class Course implements Serializable {
 		groups.remove(group);
 	}
 
+	public String print(){
+		StringBuilder output = new StringBuilder();
+		output.append(courseID);
+		for (int i = 0; i<(10-courseID.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(name);
+		for (int i = 0; i<(57-name.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		String ECTSString = Integer.toString(ECTS);
+		output.append(ECTSString);
+		for (int i = 0; i<(4-ECTSString.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(groups.size());
+		return output.toString();
+	}
+
+	public static void printHeader() {
+		System.out.println("    ID    |                          Nazwa                          |ECTS|Il.gr.");
+	}
+
 }

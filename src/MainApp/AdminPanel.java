@@ -60,12 +60,15 @@ public class AdminPanel extends Panel {
 			chosenMenuPosition = Integer.parseInt(Main.inputValue);
 			switch (chosenMenuPosition) {
 				case 1:
-					addAdmin();
+					printAdmins();
 					break;
 				case 2:
-					editAdmin();
+					addAdmin();
 					break;
 				case 3:
+					editAdmin();
+					break;
+				case 4:
 					removeAdmin();
 					break;
 				case 0:
@@ -111,6 +114,12 @@ public class AdminPanel extends Panel {
 				case 1:
 					System.out.print("Podaj nowe haslo: ");
 					String password = Main.input.readLine();
+					System.out.print("Powtorz haslo: ");
+					String password2 = Main.input.readLine();
+					if (!(password.equals(password2))) {
+						System.out.println("Podano rozne hasla! Nastepuje przerwanie.");
+						break;
+					}
 					a.setPassword(password);
 					System.out.println("Zmieniono haslo");
 					break;
@@ -155,7 +164,7 @@ public class AdminPanel extends Panel {
 		String lastName = Main.input.readLine();
 		Admin a = new Admin(username, password, firstName, lastName);
 		Main.admins.add(a);
-		System.out.print("Dodano uzytkownika.");
+		System.out.println("Dodano uzytkownika.");
 	}
 
 	private void studentEnrollment() throws IOException {
@@ -269,12 +278,15 @@ public class AdminPanel extends Panel {
 			chosenMenuPosition = Integer.parseInt(Main.inputValue);
 			switch (chosenMenuPosition) {
 				case 1:
-					addGroup();
+					printGroups();
 					break;
 				case 2:
-					editGroup();
+					addGroup();
 					break;
 				case 3:
+					editGroup();
+					break;
+				case 4:
 					removeGroup();
 					break;
 				case 0:
@@ -311,7 +323,7 @@ public class AdminPanel extends Panel {
 		Group g = new Group(name, groupID, lecturer, place, slots, c);
 		c.addGroup(g);
 		Main.groups.add(g);
-		System.out.print("Dodano grupe.");
+		System.out.println("Dodano grupe.");
 	}
 
 	private void editGroup() throws IOException {
@@ -391,12 +403,15 @@ public class AdminPanel extends Panel {
 			chosenMenuPosition = Integer.parseInt(Main.inputValue);
 			switch (chosenMenuPosition) {
 				case 1:
-					addCourse();
+					printCourses();
 					break;
 				case 2:
-					editCourse();
+					addCourse();
 					break;
 				case 3:
+					editCourse();
+					break;
+				case 4:
 					removeCourse();
 					break;
 				case 0:
@@ -421,7 +436,7 @@ public class AdminPanel extends Panel {
 		int ECTS = Integer.parseInt(ECTSString);
 		Course c = new Course(name, courseID, ECTS);
 		Main.courses.add(c);
-		System.out.print("Dodano kurs.");
+		System.out.println("Dodano kurs.");
 	}
 
 	private void editCourse() throws IOException {
@@ -485,12 +500,15 @@ public class AdminPanel extends Panel {
 			chosenMenuPosition = Integer.parseInt(Main.inputValue);
 			switch (chosenMenuPosition) {
 				case 1:
-					addStudent();
+					printStudents();
 					break;
 				case 2:
-					editStudent();
+					addStudent();
 					break;
 				case 3:
+					editStudent();
+					break;
+				case 4:
 					removeStudent();
 					break;
 				case 0:
@@ -524,7 +542,7 @@ public class AdminPanel extends Panel {
 		String email = Main.input.readLine();
 		Student s = new Student(username, password, firstName, lastName, email);
 		Main.students.add(s);
-		System.out.print("Dodano studenta.");
+		System.out.println("Dodano studenta.");
 	}
 
 	private void editStudent() throws IOException {
@@ -551,6 +569,12 @@ public class AdminPanel extends Panel {
 				case 1:
 					System.out.print("Podaj nowe haslo: ");
 					String password = Main.input.readLine();
+					System.out.print("Powtorz haslo: ");
+					String password2 = Main.input.readLine();
+					if (!(password.equals(password2))) {
+						System.out.println("Podano rozne hasla! Nastepuje przerwanie.");
+						break;
+					}
 					s.setPassword(password);
 					System.out.println("Zmieniono haslo");
 					break;
@@ -595,9 +619,10 @@ public class AdminPanel extends Panel {
 	private void showAddEditRemoveMenu(String info) {
 		System.out.println(info + ": ");
 		System.out.println("");
-		System.out.println("1. Dodaj");
-		System.out.println("2. Edytuj");
-		System.out.println("3. Usun");
+		System.out.println("1. Wyswietl");
+		System.out.println("2. Dodaj");
+		System.out.println("3. Edytuj");
+		System.out.println("4. Usun");
 		System.out.println("0. Wyjdz");
 		System.out.println("");
 	}
@@ -606,9 +631,9 @@ public class AdminPanel extends Panel {
 	void showMenu() {
 		System.out.println("MENU:");
 		System.out.println("1. Zarzadzanie administartorami");
-		System.out.println("2. Zarzadzaj studentami");//TODO:dodac wyswietlanie studentow w bazie
-		System.out.println("3. Zarzadzaj kursami");//TODO:dodac wyswietlanie kursow w bazie
-		System.out.println("4. Zarzadzaj grupami");//TODO:dodac wyswietlanie grup w bazie
+		System.out.println("2. Zarzadzaj studentami");
+		System.out.println("3. Zarzadzaj kursami");
+		System.out.println("4. Zarzadzaj grupami");
 		System.out.println("5. Administracyjne zapisy");
 		System.out.println("6. Eksportuj dane");
 		System.out.println("0. Wyjdz");

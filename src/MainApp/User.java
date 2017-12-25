@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class User implements Serializable{
+public class User implements Serializable {
 	private String login;
 	private String password; //hashed
 	

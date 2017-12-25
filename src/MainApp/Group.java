@@ -76,8 +76,7 @@ public class Group implements Serializable {
 		students.remove(student);
 	}
 
-	@Override
-	public String toString(){
+	public String print(){
 		StringBuilder output = new StringBuilder();
 		output.append(groupID);
 		for (int i = 0; i<(7-groupID.length()); i++) {
@@ -102,7 +101,6 @@ public class Group implements Serializable {
 		output.append(students.size());
 		output.append("/");
 		output.append(slots);
-		output.append("|");
 		return output.toString();
 	}
 

@@ -67,4 +67,32 @@ public class Student extends User implements Serializable {
 		return groups;
 	}
 
+	public String print(){
+		StringBuilder output = new StringBuilder();
+		output.append(getLogin());
+		for (int i = 0; i<(6-getLogin().length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(firstName);
+		for (int i = 0; i<(19-firstName.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(lastName);
+		for (int i = 0; i<(19-lastName.length()); i++) {
+			output.append(" ");
+		}
+		output.append("|");
+		output.append(email);
+		for (int i = 0; i<(30-email.length()); i++) {
+			output.append(" ");
+		}
+		return output.toString();
+	}
+
+	public static void printHeader() {
+		System.out.println("Indeks|       Imie        |     Nazwisko      |            E-mail");
+	}
+
 }
