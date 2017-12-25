@@ -15,7 +15,7 @@ public class Group implements Serializable {
 
 	private ArrayList<Student> students;
 
-	public Group(String name, String groupID, String lecturer, String place, int slots, Course course) {
+	Group(String name, String groupID, String lecturer, String place, int slots, Course course) {
 		this.name = name;
 		this.groupID = groupID;
 		this.lecturer = lecturer;
@@ -27,10 +27,6 @@ public class Group implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setGroupID(String groupID) {
-		this.groupID = groupID;
 	}
 
 	public void setSlots(int slots) {
@@ -62,10 +58,6 @@ public class Group implements Serializable {
 
 	public boolean checkFreeSlots() {
 		return slots > students.size();
-	}
-
-	public int calculateFreeSlots() {
-		return slots - students.size();
 	}
 
 	public void addStudent(Student student) {

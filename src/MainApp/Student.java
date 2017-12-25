@@ -48,11 +48,11 @@ public class Student extends User implements Serializable {
 		return false;
 	}
 
-	public boolean checkIfMemberOfGroup(Group g){
+	public boolean checkIfNotMemberOfGroup(Group g){
 		for (Group group : groups) {
-			if (g == group) return true;
+			if (g == group) return false;
 		}
-		return false;
+		return true;
 	}
 
 	public void addGroup(Group group) {

@@ -22,10 +22,6 @@ public class Course implements Serializable {
 		this.name = name;
 	}
 
-	public void setCourseID(String courseID) {
-		this.courseID = courseID;
-	}
-
 	public void setECTS(int ECTS) {
 		this.ECTS = ECTS;
 	}

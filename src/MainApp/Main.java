@@ -1,5 +1,7 @@
 package MainApp;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -13,12 +15,12 @@ public class Main {
 	public static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 	public static String inputValue;
 
-	public Main() {
+	private Main() {
 		Admin root = new Admin("root", "toor", "", "");
 		admins.add(root);
 	}
 
-	public void start() throws IOException {
+	private void start() throws IOException {
 		int chosenMenuPosition;
 		System.out.println("Witamy w systemie rejestracji studentow PWr :)");
 		System.out.println("");
@@ -60,7 +62,7 @@ public class Main {
 	}
 
 	// do logowania, gdy zalogowany otwiera panel admina badz studenta w zaleznosci od zalogowanego uzytkownika
-	public void logIn(String username, String password) {
+	private void logIn(String username, String password) {
 		boolean loggedIn = false;
 		String loggedInType = "";
 		Admin loggedAdmin = new Admin("","","","");
@@ -108,13 +110,13 @@ public class Main {
                     break;
 				default:
 					System.out.println("Wystapil blad...");
-					return;
 			}
 		} else {
 			System.out.println("Bledne haslo!");
 		}
 	}
 
+	@Nullable
 	public static Student findStudent(String username) {
 		for(Student student : students) {
 			if (username.equals(student.getLogin())) return student;
@@ -123,7 +125,7 @@ public class Main {
 	}
 
 	// do ladowania z pliku bazy studentow, kursow, grup, kont admina, itd.
-	public void loadData() throws IOException, ClassNotFoundException {
+	private void loadData() throws IOException, ClassNotFoundException {
 		FileInputStream fosAdmins = new FileInputStream("admins.bak");
 		ObjectInputStream oosAdmins = new ObjectInputStream(fosAdmins);
 		admins = (ArrayList<Admin>) oosAdmins.readObject();
@@ -153,6 +155,7 @@ public class Main {
 		}
 	}
 
+	@Nullable
 	public static Course findCourse(String courseID) {
 		for(Course course : courses) {
 			if (courseID.equals(course.getCourseID())) return course;
@@ -160,6 +163,7 @@ public class Main {
 		return null;
 	}
 
+	@Nullable
 	public static Group findGroup(String groupID) {
 		for(Group group : groups) {
 			if (groupID.equals(group.getGroupID())) return group;
@@ -167,6 +171,7 @@ public class Main {
 		return null;
 	}
 
+	@Nullable
 	public static Admin findAdmin(String username) {
 		for(Admin admin : admins) {
 			if (username.equals(admin.getLogin())) return admin;

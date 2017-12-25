@@ -2,11 +2,11 @@ package MainApp;
 
 import java.io.IOException;
 
-public class StudentPanel extends Panel {
+class StudentPanel extends Panel {
 
 	private Student loggedStudent;
 
-	public StudentPanel(Student student) {
+	StudentPanel(Student student) {
 		loggedStudent = student;
 	}
 
@@ -73,7 +73,7 @@ public class StudentPanel extends Panel {
 			System.out.println("Podana grupa nie istnieje.");
 			return;
 		}
-		if(!loggedStudent.checkIfMemberOfGroup(g)) {
+		if(loggedStudent.checkIfNotMemberOfGroup(g)) {
 			System.out.println("Nie nalezyz do tej grupy.");
 			return;
 		}

@@ -1,15 +1,14 @@
 package MainApp;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class AdminPanel extends Panel {
+class AdminPanel extends Panel {
 
 	private Admin loggedAdmin;
 
-	public AdminPanel(Admin admin) {
+	AdminPanel(Admin admin) {
 		loggedAdmin = admin;
 	}
 
@@ -241,7 +240,7 @@ public class AdminPanel extends Panel {
 			System.out.println("Podana grupa nie istnieje.");
 			return;
 		}
-		if(!s.checkIfMemberOfGroup(g)) {
+		if(s.checkIfNotMemberOfGroup(g)) {
 			System.out.println("Student nie nalezy do tej grupy.");
 			return;
 		}
