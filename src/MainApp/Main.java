@@ -6,7 +6,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
-
 	public static ArrayList<Admin> admins = new ArrayList<>();
     public static ArrayList<Student> students = new ArrayList<>();
     public static ArrayList<Course> courses = new ArrayList<>();
@@ -25,7 +24,7 @@ public class Main {
 		System.out.println("Witamy w systemie rejestracji studentow PWr :)");
 		System.out.println("");
 		do {
-			showLoginPanel();
+			showMenu();
 			System.out.print("Twoj wybor: ");
 			inputValue = input.readLine();
 			chosenMenuPosition = Integer.parseInt(inputValue);
@@ -53,7 +52,7 @@ public class Main {
 		} while (chosenMenuPosition != 0);
 	}
 
-	private void showLoginPanel() {
+	private void showMenu() {
 		System.out.println("MENU:");
 		System.out.println("1. Zaloguj sie");
 		System.out.println("2. Wczytaj dane z pliku");
@@ -116,14 +115,6 @@ public class Main {
 		}
 	}
 
-	@Nullable
-	public static Student findStudent(String username) {
-		for(Student student : students) {
-			if (username.equals(student.getLogin())) return student;
-		}
-		return null;
-	}
-
 	// do ladowania z pliku bazy studentow, kursow, grup, kont admina, itd.
 	private void loadData() throws IOException, ClassNotFoundException {
 		FileInputStream fosAdmins = new FileInputStream("admins.bak");
@@ -144,15 +135,12 @@ public class Main {
 		oosGroups.close();
 	}
 
-
-	public static void main(String[] args) {
-		//launch(args);
-		Main app = new Main(); //TODO: zmienic na statyczna kiedys
-		try { // HOW NOT TO HANDLE EXCEPTIONS IN JAVA XDDDD
-			app.start();
-		} catch (Exception e) {
-			// do sth
+	@Nullable
+	public static Student findStudent(String username) {
+		for(Student student : students) {
+			if (username.equals(student.getLogin())) return student;
 		}
+		return null;
 	}
 
 	@Nullable
@@ -177,5 +165,15 @@ public class Main {
 			if (username.equals(admin.getLogin())) return admin;
 		}
 		return null;
+	}
+
+	public static void main(String[] args) {
+		//launch(args);
+		Main app = new Main(); //TODO: zmienic na statyczna kiedys
+		try { // HOW NOT TO HANDLE EXCEPTIONS IN JAVA XDDDD
+			app.start();
+		} catch (Exception e) {
+			// do sth
+		}
 	}
 }

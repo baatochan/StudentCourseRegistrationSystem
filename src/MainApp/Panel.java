@@ -3,7 +3,6 @@ package MainApp;
 import java.io.IOException;
 
 abstract class Panel {
-
 	abstract void start() throws IOException;
 
 	abstract void showMenu();
@@ -35,5 +34,4 @@ abstract class Panel {
 			System.out.println(s.print());
 		}
 	}
-
 }

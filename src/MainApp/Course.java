@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Course implements Serializable {
-
 	private String name;
 	private String courseID;
 	private int ECTS;
@@ -45,6 +44,10 @@ public class Course implements Serializable {
 		groups.remove(group);
 	}
 
+	public static void printHeader() {
+		System.out.println("    ID    |                          Nazwa                          |ECTS|Il.gr.");
+	}
+
 	public String print(){
 		StringBuilder output = new StringBuilder();
 		output.append(courseID);
@@ -66,9 +69,4 @@ public class Course implements Serializable {
 		output.append(groups.size());
 		return output.toString();
 	}
-
-	public static void printHeader() {
-		System.out.println("    ID    |                          Nazwa                          |ECTS|Il.gr.");
-	}
-
 }

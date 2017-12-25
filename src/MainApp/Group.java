@@ -29,16 +29,16 @@ public class Group implements Serializable {
 		this.name = name;
 	}
 
-	public void setSlots(int slots) {
-		this.slots = slots;
-	}
-
 	public void setLecturer(String lecturer) {
 		this.lecturer = lecturer;
 	}
 
 	public void setPlace(String place) {
 		this.place = place;
+	}
+
+	public void setSlots(int slots) {
+		this.slots = slots;
 	}
 
 	public String getGroupID() {
@@ -68,6 +68,10 @@ public class Group implements Serializable {
 		students.remove(student);
 	}
 
+	public static void printHeader() {
+		System.out.println("  ID   |           Nazwa            |       Prowadzacy        |  Sala   |Miejsca");
+	}
+
 	public String print(){
 		StringBuilder output = new StringBuilder();
 		output.append(groupID);
@@ -95,9 +99,4 @@ public class Group implements Serializable {
 		output.append(slots);
 		return output.toString();
 	}
-
-	public static void printHeader() {
-		System.out.println("  ID   |           Nazwa            |       Prowadzacy        |  Sala   |Miejsca");
-	}
-	
 }

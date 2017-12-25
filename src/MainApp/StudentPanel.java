@@ -3,7 +3,6 @@ package MainApp;
 import java.io.IOException;
 
 class StudentPanel extends Panel {
-
 	private Student loggedStudent;
 
 	StudentPanel(Student student) {
@@ -45,41 +44,16 @@ class StudentPanel extends Panel {
 		} while (chosenMenuPosition != 0);
 	}
 
-	private void changeMyPassword() throws IOException {
-		System.out.print("Podaj nowe haslo: ");
-		String password = Main.input.readLine();
-		System.out.print("Powtorz haslo: ");
-		String password2 = Main.input.readLine();
-		if (!(password.equals(password2))) {
-			System.out.println("Podano rozne hasla! Nastepuje przerwanie.");
-			return;
-		}
-		loggedStudent.setPassword(password);
-		System.out.println("Zmieniono haslo");
-	}
-
-	private void printMyGroups() {
-		Group.printHeader();
-		for (Group g : loggedStudent.getGroups()) {
-			System.out.println(g.toString());
-		}
-	}
-
-	private void removeFromGroup() throws IOException {
-		System.out.print("Podaj ID grupy: ");
-		String groupID = Main.input.readLine();
-		Group g = Main.findGroup(groupID);
-		if (g == null) {
-			System.out.println("Podana grupa nie istnieje.");
-			return;
-		}
-		if(loggedStudent.checkIfNotMemberOfGroup(g)) {
-			System.out.println("Nie nalezyz do tej grupy.");
-			return;
-		}
-		loggedStudent.removeGroup(g);
-		g.removeStudent(loggedStudent);
-		System.out.println("Wypisano.");
+	@Override
+	void showMenu() {
+		System.out.println("MENU:");
+		System.out.println("1. Wyswietl dostepne grupy");
+		System.out.println("2. Zapis do grupy");
+		System.out.println("3. Wypis z grupy");
+		System.out.println("4. Grupy do ktorych jestem zapisany");
+		System.out.println("5. Zmiana hasla");
+		System.out.println("0. Wyjdz");
+		System.out.println("");
 	}
 
 	private void addToGroup() throws IOException {
@@ -103,16 +77,40 @@ class StudentPanel extends Panel {
 		System.out.println("Zapisano.");
 	}
 
-	@Override
-	void showMenu() {
-		System.out.println("MENU:");
-		System.out.println("1. Wyswietl dostepne grupy");
-		System.out.println("2. Zapis do grupy");
-		System.out.println("3. Wypis z grupy");
-		System.out.println("4. Grupy do ktorych jestem zapisany");
-		System.out.println("5. Zmiana hasla");
-		System.out.println("0. Wyjdz");
-		System.out.println("");
+	private void removeFromGroup() throws IOException {
+		System.out.print("Podaj ID grupy: ");
+		String groupID = Main.input.readLine();
+		Group g = Main.findGroup(groupID);
+		if (g == null) {
+			System.out.println("Podana grupa nie istnieje.");
+			return;
+		}
+		if(loggedStudent.checkIfNotMemberOfGroup(g)) {
+			System.out.println("Nie nalezyz do tej grupy.");
+			return;
+		}
+		loggedStudent.removeGroup(g);
+		g.removeStudent(loggedStudent);
+		System.out.println("Wypisano.");
 	}
 
+	private void printMyGroups() {
+		Group.printHeader();
+		for (Group g : loggedStudent.getGroups()) {
+			System.out.println(g.toString());
+		}
+	}
+
+	private void changeMyPassword() throws IOException {
+		System.out.print("Podaj nowe haslo: ");
+		String password = Main.input.readLine();
+		System.out.print("Powtorz haslo: ");
+		String password2 = Main.input.readLine();
+		if (!(password.equals(password2))) {
+			System.out.println("Podano rozne hasla! Nastepuje przerwanie.");
+			return;
+		}
+		loggedStudent.setPassword(password);
+		System.out.println("Zmieniono haslo");
+	}
 }

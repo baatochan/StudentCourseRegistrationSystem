@@ -3,13 +3,20 @@ package MainApp;
 import java.io.Serializable;
 
 public class Admin extends User implements Serializable {
-
 	private String firstName;
 	private String lastName;
 	
 	Admin(String login, String password, String firstName, String lastName) {
 		super(login, password);
 		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
@@ -20,12 +27,8 @@ public class Admin extends User implements Serializable {
 		return false;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public static void printHeader() {
+		System.out.println("  Login  |          Imie           |                  Nazwisko");
 	}
 
 	public String print(){
@@ -45,9 +48,5 @@ public class Admin extends User implements Serializable {
 			output.append(" ");
 		}
 		return output.toString();
-	}
-
-	public static void printHeader() {
-		System.out.println("  Login  |          Imie           |                  Nazwisko");
 	}
 }
