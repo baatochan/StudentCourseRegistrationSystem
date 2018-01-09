@@ -33,6 +33,11 @@ public final class TestData {
 			new Course("Inzynieria Oprogramowania","C",111)
 	};
 
+	static String coursesPrintOutput[] = {
+			"A         |Test Tset                                                |1   |0",
+			"C         |Inzynieria Oprogramowania                                |111 |0"
+	};
+
 	static String groupsData[][] = new String[][] {
 			{"test 123","AA","marcin jakistam","c13 1.12", "10"}, {"Inzynieria Oprogramowania L","CA","Jedrzej","C 244","1"},
 			{"Inzynieria Oprogramowania L","CB","Marek","C2 24","5"}, {"test 321","AB","jerzy przyjaciel mlodziezy","c1 112","20"}
