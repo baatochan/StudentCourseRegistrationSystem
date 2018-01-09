@@ -35,11 +35,12 @@ public final class TestData {
 
 	static String groupsData[][] = new String[][] {
 			{"test 123","AA","marcin jakistam","c13 1.12", "10"}, {"Inzynieria Oprogramowania L","CA","Jedrzej","C 244","1"},
-			{"test 321","AB","jerzy przyjaciel mlodziezy","c1 112","20"}
+			{"Inzynieria Oprogramowania L","CB","Marek","C2 24","5"}, {"test 321","AB","jerzy przyjaciel mlodziezy","c1 112","20"}
 	};
 
 	static Group groups[] = {
 			new Group("test 123","AA","marcin jakistam","c13 1.12", 10, courses[0]),
-			new Group("Inzynieria Oprogramowania L","CA","Jedrzej","C 244",1, courses[1])
+			new Group("Inzynieria Oprogramowania L","CA","Jedrzej","C 244",1, courses[1]),
+			new Group("Inzynieria Oprogramowania L","CB","Marek","C2 24",5, courses[1])
 	};
 }
