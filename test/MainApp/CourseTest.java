@@ -3,11 +3,13 @@ package MainApp;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
+@Category({TestCategory1.class, TestCategory2.class})
 public class CourseTest {
 
 	@BeforeClass

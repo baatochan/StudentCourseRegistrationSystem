@@ -4,12 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
+@Category(TestCategory2.class)
 public class StudentTest {
 	private static Student s1 = TestData.students[0];
 	private static Student s2 = TestData.students[1];

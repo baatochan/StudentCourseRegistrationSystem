@@ -4,11 +4,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
+@Category(TestCategory1.class)
 public class MainTest {
 
 	@BeforeClass
@@ -37,6 +39,7 @@ public class MainTest {
 	}
 
 	@Test
+	@Category(TestCategory3.class)
 	public void findGroup() {
 		for (int i = 0; i < 3; i++) {
 			assertEquals(TestData.groups[i], Main.findGroup(TestData.groupsData[i][1]));
