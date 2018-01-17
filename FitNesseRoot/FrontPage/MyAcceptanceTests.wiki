@@ -1,0 +1,7 @@
+---
+Suite
+---
+!contents -R2 -g -p -f -h
+
+"Testy akceptacyjne"
+!path D:\Users\barto\OneDrive\Documents\Developer\StudentCourseRegistrationSystem\out\production\StudentCourseRegistrationSystem
