@@ -1,14 +1,18 @@
 package FitNesseTests;
 
-//import fit.Fixture;
+import fit.Fixture;
 import MainApp.Admin;
 import MainApp.AdminPanel;
+import MainApp.Main;
 
-public class SetUp { //extends Fixture{
-	static AdminPanel panel;
+public class SetUp extends Fixture {
+	static Main app;
 	static Admin admin;
+	static AdminPanel panel;
+
 	public SetUp() {
-		admin = new Admin("root","toor","","");
+		app = new Main();
+		admin = Main.findAdmin("root");
 		panel = new AdminPanel(admin);
 	}
 }

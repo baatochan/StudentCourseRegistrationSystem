@@ -14,7 +14,7 @@ public class Main {
 	public static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 	public static String inputValue;
 
-	private Main() {
+	public Main() {
 		Admin root = new Admin("root", "toor", "", "");
 		admins.add(root);
 	}

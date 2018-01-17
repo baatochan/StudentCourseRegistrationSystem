@@ -341,7 +341,7 @@ public class AdminPanel extends Panel {
 		System.out.println("Dodano studenta.");
 	}
 
-	private void addStudentToDB(String username, String password, String password2, String firstName, String lastName, String email) throws Exception {
+	public void addStudentToDB(String username, String password, String password2, String firstName, String lastName, String email) throws Exception {
 		if (Student.exists(username)) {
 			throw new Exception("Podany student juz istnieje!");
 		}
@@ -439,7 +439,7 @@ public class AdminPanel extends Panel {
 		System.out.println("Dodano kurs.");
 	}
 
-	private void addCourseToDB(String name, String courseID, String ECTSString) throws Exception {
+	public void addCourseToDB(String name, String courseID, String ECTSString) throws Exception {
 		if (Course.exists(courseID)) {
 			throw new Exception("Istnieje juz kurs o podanym ID!");
 		}
@@ -529,7 +529,7 @@ public class AdminPanel extends Panel {
 		System.out.println("Dodano grupe.");
 	}
 
-	private void addGroupToDB(String courseID, String groupID, String name, String lecturer, String place, String slotsString) throws Exception {
+	public void addGroupToDB(String courseID, String groupID, String name, String lecturer, String place, String slotsString) throws Exception {
 		Course c = Main.findCourse(courseID);
 		if (c == null) {
 			throw new Exception("Podany kurs nie istnieje!");
@@ -634,7 +634,7 @@ public class AdminPanel extends Panel {
 		System.out.println("Zapisano studenta.");
 	}
 
-	private void addStudentToGroupForReal(String index, String groupID, String answer) throws Exception {
+	public void addStudentToGroupForReal(String index, String groupID, String answer) throws Exception {
 		Student s = Main.findStudent(index);
 		if (s == null) {
 			throw new Exception("Podany student nie istnieje.");
