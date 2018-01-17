@@ -49,6 +49,10 @@ public class Group implements Serializable {
 		return course;
 	}
 
+	public ArrayList<Student> getStudents() {
+		return students;
+	}
+
 	public static boolean exists(String groupID) {
 		for (Group group : Main.groups) {
 			if (groupID.equals(group.getGroupID())) return true;
