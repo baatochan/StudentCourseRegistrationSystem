@@ -29,6 +29,10 @@ public class Course implements Serializable {
 		return courseID;
 	}
 
+	public ArrayList<Group> getGroups() {
+		return groups;
+	}
+
 	public static boolean exists(String courseID) {
 		for (Course course : Main.courses) {
 			if (courseID.equals(course.getCourseID())) return true;

@@ -1,0 +1,17 @@
+!include AddGroupTest
+!include AddStudentTest
+!|FitNesseTests.AddStudentToGroupTest|
+|data|addStudentToGroup?|numberOfStudentsInTheGroup?|numberOfGroupsWhereStudentIsEnrolled?|
+| "226105",AA,n | dodano | 1 | 1 |
+| "226105",AB,n | Wyjatek: Student dodany juz do innej grupy tego kursu. | 0 | 1 |
+| "222222",AA,n | Wyjatek: Podany student nie istnieje. | 1 |  |
+| "226105",XX,n | Wyjatek: Podana grupa nie istnieje. |  | 1 |
+| "226105",BA,n | dodano | 1 | 2 |
+| "226104",BA,n | Wyjatek: W grupie nie ma miejsc, nie wyrazono zgody na zpais ponad stan! | 1 | 0 |
+| "226104",BA,Y | dodano | 2 | 1 |
+| "226105",CA,n | dodano | 1 | 3 |
+| "226104",AA,n | dodano | 2 | 2 |
+| "226104",CA,n | dodano | 2 | 3 |
+| "226113",BC,n | dodano | 1 | 1 |
+| "226113",AC,n |  |  |  |
+| "226113",CA,n | celowo bledna wartosc | 0 | 0 |

@@ -1,0 +1,12 @@
+!include AddCourseTest
+!|FitNesseTests.AddGroupTest|
+|data|addGroup?|numberOfGroups?|numberOfGroupsOfTheCourse?|
+| A,AA,Test,Rodziewicz,C1 113,20 | dodano | 1 | 1 |
+| Y,YA,Test 2,Prowadzacy 1,C3 12,5 | Wyjatek: Podany kurs nie istnieje! | 1 | |
+| A,AA,Test 3,Prowadzacy 3,C2 12,8 | Wyjatek: Podana grupa juz istnieje! | 1 | 1 |
+| A,AB,Test 4,Prowadzacy 4,C4 17,axv | Wyjatek: Podano bledna ilosc miejsc! | 1 | 1 |
+| A,AB,Test 4,Prowadzacy 4,C4 17,13 | dodano | 2 | 2 |
+| A,AC,Test 5,Prowadzacy 5,C13 1.12,18 | dodano | 3 | 3 |
+| B,BA,Test 6,Prowadzacy 6,C18 1,1 | dodano | 4 | 1 |
+| B,BC,Test 7,Prowadzacy 7,C1 4,15 |  |  |  |
+| C,CA,Test 8,Prowadzacy 8,C1 8,13 | celowo bledna wartosc | 0 | 0 |

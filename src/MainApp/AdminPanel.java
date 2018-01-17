@@ -4,10 +4,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-class AdminPanel extends Panel {
+public class AdminPanel extends Panel {
 	private Admin loggedAdmin;
 
-	AdminPanel(Admin admin) {
+	public AdminPanel(Admin admin) {
 		loggedAdmin = admin;
 	}
 
@@ -322,27 +322,34 @@ class AdminPanel extends Panel {
 	private void addStudent() throws IOException {
 		System.out.print("Podaj indeks (login): ");
 		String username = Main.input.readLine();
-		if (Student.exists(username)) {
-			System.out.println("Podany student juz istnieje! Nastepuje przerwanie.");
-			return;
-		}
 		System.out.print("Podaj haslo: ");
 		String password = Main.input.readLine();
 		System.out.print("Powtorz haslo: ");
 		String password2 = Main.input.readLine();
-		if (!(password.equals(password2))) {
-			System.out.println("Podano rozne hasla! Nastepuje przerwanie.");
-			return;
-		}
 		System.out.print("Podaj imie: ");
 		String firstName = Main.input.readLine();
 		System.out.print("Podaj nazwisko: ");
 		String lastName = Main.input.readLine();
 		System.out.print("Podaj email: ");
 		String email = Main.input.readLine();
+		try {
+			addStudentToDB(username, password, password2, firstName, lastName, email);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		System.out.println("Dodano studenta.");
+	}
+
+	public void addStudentToDB(String username, String password, String password2, String firstName, String lastName, String email) throws Exception {
+		if (Student.exists(username)) {
+			throw new Exception("Podany student juz istnieje!");
+		}
+		if (!(password.equals(password2))) {
+			throw new Exception("Podano rozne hasla!");
+		}
 		Student s = new Student(username, password, firstName, lastName, email);
 		Main.students.add(s);
-		System.out.println("Dodano studenta.");
 	}
 
 	private void editStudent() throws IOException {
@@ -419,18 +426,33 @@ class AdminPanel extends Panel {
 	private void addCourse() throws IOException {
 		System.out.print("Podaj ID kursu: ");
 		String courseID = Main.input.readLine();
-		if (Course.exists(courseID)) {
-			System.out.println("Podany kurs juz istnieje! Nastepuje przerwanie.");
-			return;
-		}
 		System.out.print("Podaj nazwe: ");
 		String name = Main.input.readLine();
 		System.out.print("Podaj ECTS: ");
 		String ECTSString = Main.input.readLine();
-		int ECTS = Integer.parseInt(ECTSString);
+		try {
+			addCourseToDB(name, courseID, ECTSString);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		System.out.println("Dodano kurs.");
+	}
+
+	public void addCourseToDB(String name, String courseID, String ECTSString) throws Exception {
+		if (Course.exists(courseID)) {
+			throw new Exception("Istnieje juz kurs o podanym ID!");
+		}
+
+		int ECTS;
+		try {
+			ECTS = Integer.parseInt(ECTSString);
+		} catch (Exception e) {
+			throw new Exception("Podano bledna wartosc ECTS!");
+		}
+
 		Course c = new Course(name, courseID, ECTS);
 		Main.courses.add(c);
-		System.out.println("Dodano kurs.");
 	}
 
 	private void editCourse() throws IOException {
@@ -488,17 +510,8 @@ class AdminPanel extends Panel {
 	private void addGroup() throws IOException {
 		System.out.print("Podaj ID kursu do ktorego tworzysz grupe: ");
 		String courseID = Main.input.readLine();
-		Course c = Main.findCourse(courseID);
-		if (c == null) {
-			System.out.println("Podany kurs nie istnieje! Nastepuje przerwanie.");
-			return;
-		}
 		System.out.print("Podaj ID grupy: ");
 		String groupID = Main.input.readLine();
-		if (Group.exists(groupID)) {
-			System.out.println("Podana grupa juz istnieje! Nastepuje przerwanie.");
-			return;
-		}
 		System.out.print("Podaj nazwe: ");
 		String name = Main.input.readLine();
 		System.out.print("Podaj prowadzacego: ");
@@ -507,11 +520,34 @@ class AdminPanel extends Panel {
 		String place = Main.input.readLine();
 		System.out.print("Podaj ilosc miejsc: ");
 		String slotsString = Main.input.readLine();
-		int slots = Integer.parseInt(slotsString);
+		try {
+			addGroupToDB(courseID, groupID, name, lecturer, place, slotsString);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		System.out.println("Dodano grupe.");
+	}
+
+	public void addGroupToDB(String courseID, String groupID, String name, String lecturer, String place, String slotsString) throws Exception {
+		Course c = Main.findCourse(courseID);
+		if (c == null) {
+			throw new Exception("Podany kurs nie istnieje!");
+		}
+
+		if (Group.exists(groupID)) {
+			throw new Exception("Podana grupa juz istnieje!");
+		}
+
+		int slots;
+		try {
+			slots = Integer.parseInt(slotsString);
+		} catch (Exception e) {
+			throw new Exception("Podano bledna ilosc miejsc!");
+		}
 		Group g = new Group(name, groupID, lecturer, place, slots, c);
 		c.addGroup(g);
 		Main.groups.add(g);
-		System.out.println("Dodano grupe.");
 	}
 
 	private void editGroup() throws IOException {
@@ -585,33 +621,38 @@ class AdminPanel extends Panel {
 	private void addStudentToGroup() throws IOException {
 		System.out.print("Podaj numer indeksu studenta: ");
 		String index = Main.input.readLine();
-		Student s = Main.findStudent(index);
-		if (s == null) {
-			System.out.println("Podany student nie istnieje.");
-			return;
-		}
 		System.out.print("Podaj ID grupy: ");
 		String groupID = Main.input.readLine();
+		System.out.print("Jesli w grupie nie ma miejsc, czy chcesz zapisac ponad stan [Y/n]?");
+		String answer = Main.input.readLine();
+		try {
+			addStudentToGroupForReal(index, groupID, answer);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		System.out.println("Zapisano studenta.");
+	}
+
+	public void addStudentToGroupForReal(String index, String groupID, String answer) throws Exception {
+		Student s = Main.findStudent(index);
+		if (s == null) {
+			throw new Exception("Podany student nie istnieje.");
+		}
 		Group g = Main.findGroup(groupID);
 		if (g == null) {
-			System.out.println("Podana grupa nie istnieje.");
-			return;
+			throw new Exception("Podana grupa nie istnieje.");
 		}
 		if(s.checkIfAddedToAnotherGroupOfThisCourse(g.getCourse())) {
-			System.out.println("Student dodany juz do innej grupy tego kursu.");
-			return;
+			throw new Exception("Student dodany juz do innej grupy tego kursu.");
 		}
 		if(!(g.checkFreeSlots())) {
-			System.out.print("W grupie nie ma miejsc. Czy zapisac ponad stan [Y/n]?");
-			String answer = Main.input.readLine();
 			if (!(answer.equals("Y")) && !(answer.equals("y"))) {
-				System.out.println("Przerwano.");
-				return;
+				throw new Exception("W grupie nie ma miejsc, nie wyrazono zgody na zpais ponad stan!");
 			}
 		}
 		s.addGroup(g);
 		g.addStudent(s);
-		System.out.println("Zapisano studenta.");
 	}
 
 	private void removeStudentFromGroup() throws IOException {

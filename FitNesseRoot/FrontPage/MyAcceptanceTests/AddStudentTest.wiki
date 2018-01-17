@@ -1,0 +1,9 @@
+!|FitNesseTests.AddStudentTest|
+|data|addStudent?|numberOfStudents?|
+|"226105","xxx","xxx","Bartosz","Rodziewicz","baato@chan.pl"| dodano | 1 |
+|"226105","zzz","zzz","","",""| Wyjatek: Podany student juz istnieje!  | 1 |
+|"226104","zzz","zzx","","",""| Wyjatek: Podano rozne hasla!  | 1 |
+|"226104","yyy","yyy","Marcin","Test","test@tset.pl"| dodano  | 2 |
+|"226102","yyy","yyy","Marcin","Test","test@tset.pl"| dodano  | 3 |
+|"226113","yyy","yyy","Marcin","Test","test@tset.pl"| | |
+|"226106","yyy","yyy","Marcin","Test","test@tset.pl"| celowo bledna wartosc  | 0 |

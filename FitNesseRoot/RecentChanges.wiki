@@ -1,0 +1,7 @@
+|FrontPage.MyAcceptanceTests.AddStudentToGroupTest||20:52:46 Wed, Jan 17, 2018|
+|FrontPage.MyAcceptanceTests.AddGroupTest||20:41:55 Wed, Jan 17, 2018|
+|FrontPage.MyAcceptanceTests.AddCourseTest||20:15:07 Wed, Jan 17, 2018|
+|FrontPage.MyAcceptanceTests.AddStudentTest||19:31:57 Wed, Jan 17, 2018|
+|FrontPage.MyAcceptanceTests.SetUp||18:03:38 Wed, Jan 17, 2018|
+|FrontPage||17:48:57 Wed, Jan 17, 2018|
+|FrontPage.MyAcceptanceTests||17:46:51 Wed, Jan 17, 2018|
