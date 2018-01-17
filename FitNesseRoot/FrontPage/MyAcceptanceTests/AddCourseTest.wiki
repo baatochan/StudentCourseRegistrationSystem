@@ -1,0 +1,9 @@
+!|FitNesseTests.AddCourseTest|
+|data|addCourse?|numberOfCourses?|
+|Test name, A, 23 | dodano | 1 |
+|X, A, 1 | Wyjatek: Istnieje juz kurs o podanym ID! | 1 |
+|T, Z, aaa | Wyjatek: Podano bledna wartosc ECTS! | 1 |
+|Test name 2, B, 23 | dodano | 2 |
+|Test name 3, C, 23 | dodano | 3 |
+|Test name 4, D, 23 | | |
+|Test name 5, E, 23 | celowo bledna wartosc | 0 |
