@@ -1,2 +1,5 @@
 # FitNesse backups
 *.zip
+
+# Test results
+files/testResults
