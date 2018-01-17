@@ -543,7 +543,7 @@ public class AdminPanel extends Panel {
 		try {
 			slots = Integer.parseInt(slotsString);
 		} catch (Exception e) {
-			throw new Exception("Podano bledna wartosc ECTS!");
+			throw new Exception("Podano bledna ilosc miejsc!");
 		}
 		Group g = new Group(name, groupID, lecturer, place, slots, c);
 		c.addGroup(g);
