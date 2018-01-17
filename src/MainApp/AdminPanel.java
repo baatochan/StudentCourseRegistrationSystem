@@ -4,10 +4,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-class AdminPanel extends Panel {
+public class AdminPanel extends Panel {
 	private Admin loggedAdmin;
 
-	AdminPanel(Admin admin) {
+	public AdminPanel(Admin admin) {
 		loggedAdmin = admin;
 	}
 
