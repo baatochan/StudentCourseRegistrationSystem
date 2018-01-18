@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="LabE:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/LabE_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="LabE" />
+          <element id="jpa-descriptors" facet="LabE/jpa/JPA" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Mojarra-2.2.1" />
+          <element id="library" level="project" name="JAX-WS-Glassfish / JAX-WS 2.2 RI / Metro 1.X / JWSDP 2.2" />
+          <element id="library" level="project" name="OpenFaces-3.0" />
+          <element id="library" level="project" name="Richfaces-4.2.2" />
+          <element id="library" level="project" name="PrimeFaces-6.1" />
+          <element id="library" level="project" name="JPA 2.0-2.0" />
+          <element id="library" level="project" name="IceFaces-3.1.0" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="LabE/web/Web" />
+    </root>
+  </artifact>
+</component>

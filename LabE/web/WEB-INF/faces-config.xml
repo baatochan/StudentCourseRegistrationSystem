@@ -81,53 +81,5 @@
             <from-outcome>createSprzetEntity</from-outcome>
             <to-view-id>/sprzetEntity/CreateSprzetEntity.jsp</to-view-id>
         </navigation-case>
-        <navigation-case>
-            <from-outcome>editLokalizacjaEntity</from-outcome>
-            <to-view-id>/EditLokalizacjaEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>viewLokalizacjaEntity</from-outcome>
-            <to-view-id>/ViewLokalizacjaEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>lokalizacjaEntityList</from-outcome>
-            <to-view-id>/ListLokalizacjaEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>createLokalizacjaEntity</from-outcome>
-            <to-view-id>/CreateLokalizacjaEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>editOsobyEntity</from-outcome>
-            <to-view-id>/EditOsobyEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>viewOsobyEntity</from-outcome>
-            <to-view-id>/ViewOsobyEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>osobyEntityList</from-outcome>
-            <to-view-id>/ListOsobyEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>createOsobyEntity</from-outcome>
-            <to-view-id>/CreateOsobyEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>editSprzetEntity</from-outcome>
-            <to-view-id>/EditSprzetEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>viewSprzetEntity</from-outcome>
-            <to-view-id>/ViewSprzetEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>sprzetEntityList</from-outcome>
-            <to-view-id>/ListSprzetEntity.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>createSprzetEntity</from-outcome>
-            <to-view-id>/CreateSprzetEntity.jsp</to-view-id>
-        </navigation-case>
     </navigation-rule>
 </faces-config>
