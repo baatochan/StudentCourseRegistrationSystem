@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOsobyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListOsobyEmpty}" rendered="#{osobyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{osobyController.items.rowCount > 0}">
+                    <h:outputText value="#{osobyController.pagination.pageFirstItem + 1}..#{osobyController.pagination.pageLastItem + 1}/#{osobyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{osobyController.previous}" value="#{bundle.Previous} #{osobyController.pagination.pageSize}" rendered="#{osobyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{osobyController.next}" value="#{bundle.Next} #{osobyController.pagination.pageSize}" rendered="#{osobyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{osobyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_idOsoby}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idOsoby}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_imie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_nazwisko}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwisko}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_nrTel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nrTel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_adres}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adres}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_mail}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mail}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_login}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.login}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_hasło}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasło}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsobyTitle_idLokalizacji}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idLokalizacji}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{osobyController.prepareView}" value="#{bundle.ListOsobyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{osobyController.prepareEdit}" value="#{bundle.ListOsobyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{osobyController.destroy}" value="#{bundle.ListOsobyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{osobyController.prepareCreate}" value="#{bundle.ListOsobyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListOsobyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

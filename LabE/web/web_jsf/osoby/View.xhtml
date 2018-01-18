@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOsobyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOsobyLabel_idOsoby}"/>
+                    <h:outputText value="#{osobyController.selected.idOsoby}" title="#{bundle.ViewOsobyTitle_idOsoby}"/>
+                    <h:outputText value="#{bundle.ViewOsobyLabel_imie}"/>
+                    <h:outputText value="#{osobyController.selected.imie}" title="#{bundle.ViewOsobyTitle_imie}"/>
+                    <h:outputText value="#{bundle.ViewOsobyLabel_nazwisko}"/>
+                    <h:outputText value="#{osobyController.selected.nazwisko}" title="#{bundle.ViewOsobyTitle_nazwisko}"/>
+                    <h:outputText value="#{bundle.ViewOsobyLabel_nrTel}"/>
+                    <h:outputText value="#{osobyController.selected.nrTel}" title="#{bundle.ViewOsobyTitle_nrTel}"/>
+                    <h:outputText value="#{bundle.ViewOsobyLabel_adres}"/>
+                    <h:outputText value="#{osobyController.selected.adres}" title="#{bundle.ViewOsobyTitle_adres}"/>
+                    <h:outputText value="#{bundle.ViewOsobyLabel_mail}"/>
+                    <h:outputText value="#{osobyController.selected.mail}" title="#{bundle.ViewOsobyTitle_mail}"/>
+                    <h:outputText value="#{bundle.ViewOsobyLabel_login}"/>
+                    <h:outputText value="#{osobyController.selected.login}" title="#{bundle.ViewOsobyTitle_login}"/>
+                    <h:outputText value="#{bundle.ViewOsobyLabel_hasło}"/>
+                    <h:outputText value="#{osobyController.selected.hasło}" title="#{bundle.ViewOsobyTitle_hasło}"/>
+                    <h:outputText value="#{bundle.ViewOsobyLabel_idLokalizacji}"/>
+                    <h:outputText value="#{osobyController.selected.idLokalizacji}" title="#{bundle.ViewOsobyTitle_idLokalizacji}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{osobyController.destroyAndView}" value="#{bundle.ViewOsobyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOsobyEditLink}"/>
+                <br />
+                <h:commandLink action="#{osobyController.prepareCreate}" value="#{bundle.ViewOsobyCreateLink}" />
+                <br />
+                <h:commandLink action="#{osobyController.prepareList}" value="#{bundle.ViewOsobyShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOsobyIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

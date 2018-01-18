@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOsobyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_idOsoby}" for="idOsoby" />
+                    <h:inputText id="idOsoby" value="#{osobyController.selected.idOsoby}" title="#{bundle.EditOsobyTitle_idOsoby}" required="true" requiredMessage="#{bundle.EditOsobyRequiredMessage_idOsoby}"/>
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_imie}" for="imie" />
+                    <h:inputText id="imie" value="#{osobyController.selected.imie}" title="#{bundle.EditOsobyTitle_imie}" required="true" requiredMessage="#{bundle.EditOsobyRequiredMessage_imie}"/>
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_nazwisko}" for="nazwisko" />
+                    <h:inputText id="nazwisko" value="#{osobyController.selected.nazwisko}" title="#{bundle.EditOsobyTitle_nazwisko}" required="true" requiredMessage="#{bundle.EditOsobyRequiredMessage_nazwisko}"/>
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_nrTel}" for="nrTel" />
+                    <h:inputText id="nrTel" value="#{osobyController.selected.nrTel}" title="#{bundle.EditOsobyTitle_nrTel}" required="true" requiredMessage="#{bundle.EditOsobyRequiredMessage_nrTel}"/>
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_adres}" for="adres" />
+                    <h:inputText id="adres" value="#{osobyController.selected.adres}" title="#{bundle.EditOsobyTitle_adres}" required="true" requiredMessage="#{bundle.EditOsobyRequiredMessage_adres}"/>
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_mail}" for="mail" />
+                    <h:inputText id="mail" value="#{osobyController.selected.mail}" title="#{bundle.EditOsobyTitle_mail}" />
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{osobyController.selected.login}" title="#{bundle.EditOsobyTitle_login}" required="true" requiredMessage="#{bundle.EditOsobyRequiredMessage_login}"/>
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_hasło}" for="hasło" />
+                    <h:inputText id="hasło" value="#{osobyController.selected.hasło}" title="#{bundle.EditOsobyTitle_hasło}" required="true" requiredMessage="#{bundle.EditOsobyRequiredMessage_hasło}"/>
+                    <h:outputLabel value="#{bundle.EditOsobyLabel_idLokalizacji}" for="idLokalizacji" />
+                    <h:selectOneMenu id="idLokalizacji" value="#{osobyController.selected.idLokalizacji}" title="#{bundle.EditOsobyTitle_idLokalizacji}" required="true" requiredMessage="#{bundle.EditOsobyRequiredMessage_idLokalizacji}">
+                        <f:selectItems value="#{lokalizacjaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{osobyController.update}" value="#{bundle.EditOsobySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditOsobyViewLink}"/>
+                <br />
+                <h:commandLink action="#{osobyController.prepareList}" value="#{bundle.EditOsobyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditOsobyIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

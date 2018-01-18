@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSprzetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSprzetLabel_idSprzet}" for="idSprzet" />
+                    <h:inputText id="idSprzet" value="#{sprzetController.selected.idSprzet}" title="#{bundle.CreateSprzetTitle_idSprzet}" required="true" requiredMessage="#{bundle.CreateSprzetRequiredMessage_idSprzet}"/>
+                    <h:outputLabel value="#{bundle.CreateSprzetLabel_typ}" for="typ" />
+                    <h:inputText id="typ" value="#{sprzetController.selected.typ}" title="#{bundle.CreateSprzetTitle_typ}" required="true" requiredMessage="#{bundle.CreateSprzetRequiredMessage_typ}"/>
+                    <h:outputLabel value="#{bundle.CreateSprzetLabel_marka}" for="marka" />
+                    <h:inputText id="marka" value="#{sprzetController.selected.marka}" title="#{bundle.CreateSprzetTitle_marka}" required="true" requiredMessage="#{bundle.CreateSprzetRequiredMessage_marka}"/>
+                    <h:outputLabel value="#{bundle.CreateSprzetLabel_parametry}" for="parametry" />
+                    <h:inputText id="parametry" value="#{sprzetController.selected.parametry}" title="#{bundle.CreateSprzetTitle_parametry}" required="true" requiredMessage="#{bundle.CreateSprzetRequiredMessage_parametry}"/>
+                    <h:outputLabel value="#{bundle.CreateSprzetLabel_stanSprzetu}" for="stanSprzetu" />
+                    <h:inputText id="stanSprzetu" value="#{sprzetController.selected.stanSprzetu}" title="#{bundle.CreateSprzetTitle_stanSprzetu}" required="true" requiredMessage="#{bundle.CreateSprzetRequiredMessage_stanSprzetu}"/>
+                    <h:outputLabel value="#{bundle.CreateSprzetLabel_model}" for="model" />
+                    <h:inputText id="model" value="#{sprzetController.selected.model}" title="#{bundle.CreateSprzetTitle_model}" required="true" requiredMessage="#{bundle.CreateSprzetRequiredMessage_model}"/>
+                    <h:outputLabel value="#{bundle.CreateSprzetLabel_idLokalizacji}" for="idLokalizacji" />
+                    <h:selectOneMenu id="idLokalizacji" value="#{sprzetController.selected.idLokalizacji}" title="#{bundle.CreateSprzetTitle_idLokalizacji}" required="true" requiredMessage="#{bundle.CreateSprzetRequiredMessage_idLokalizacji}">
+                        <f:selectItems value="#{lokalizacjaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSprzetLabel_idOsoby}" for="idOsoby" />
+                    <h:selectOneMenu id="idOsoby" value="#{sprzetController.selected.idOsoby}" title="#{bundle.CreateSprzetTitle_idOsoby}" required="true" requiredMessage="#{bundle.CreateSprzetRequiredMessage_idOsoby}">
+                        <f:selectItems value="#{osobyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sprzetController.create}" value="#{bundle.CreateSprzetSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sprzetController.prepareList}" value="#{bundle.CreateSprzetShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSprzetIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
