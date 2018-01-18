@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="NewPersistenceUnit">
+        <class>testApp.LokalizacjaEntity</class>
+        <class>testApp.OsobyEntity</class>
+        <class>testApp.SprzetEntity</class>
+        <properties>
+            <property name="toplink.jdbc.url"
+                      value="jdbc:derby:C:/Users/barto/Google Drive/Documents/Developer/StudentCourseRegistrationSystem/LabE/db;create=true"/>
+            <property name="toplink.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="hibernate.connection.url"
+                      value="jdbc:derby:C:/Users/barto/Google Drive/Documents/Developer/StudentCourseRegistrationSystem/LabE/db;create=true"/>
+            <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="openjpa.ConnectionURL"
+                      value="jdbc:derby:C:/Users/barto/Google Drive/Documents/Developer/StudentCourseRegistrationSystem/LabE/db;create=true"/>
+            <property name="openjpa.ConnectionDriverName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="eclipselink.jdbc.url"
+                      value="jdbc:derby:C:/Users/barto/Google Drive/Documents/Developer/StudentCourseRegistrationSystem/LabE/db;create=true"/>
+            <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+        </properties>
+    </persistence-unit>
+</persistence>
