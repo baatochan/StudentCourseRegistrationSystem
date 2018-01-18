@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSprzetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSprzetEmpty}" rendered="#{sprzetController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sprzetController.items.rowCount > 0}">
+                    <h:outputText value="#{sprzetController.pagination.pageFirstItem + 1}..#{sprzetController.pagination.pageLastItem + 1}/#{sprzetController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sprzetController.previous}" value="#{bundle.Previous} #{sprzetController.pagination.pageSize}" rendered="#{sprzetController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sprzetController.next}" value="#{bundle.Next} #{sprzetController.pagination.pageSize}" rendered="#{sprzetController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sprzetController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSprzetTitle_idSprzet}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSprzet}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSprzetTitle_typ}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typ}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSprzetTitle_marka}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.marka}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSprzetTitle_parametry}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parametry}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSprzetTitle_stanSprzetu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stanSprzetu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSprzetTitle_model}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.model}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSprzetTitle_idLokalizacji}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idLokalizacji}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSprzetTitle_idOsoby}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idOsoby}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sprzetController.prepareView}" value="#{bundle.ListSprzetViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sprzetController.prepareEdit}" value="#{bundle.ListSprzetEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sprzetController.destroy}" value="#{bundle.ListSprzetDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sprzetController.prepareCreate}" value="#{bundle.ListSprzetCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSprzetIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

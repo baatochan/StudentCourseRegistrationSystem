@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSprzetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSprzetLabel_idSprzet}"/>
+                    <h:outputText value="#{sprzetController.selected.idSprzet}" title="#{bundle.ViewSprzetTitle_idSprzet}"/>
+                    <h:outputText value="#{bundle.ViewSprzetLabel_typ}"/>
+                    <h:outputText value="#{sprzetController.selected.typ}" title="#{bundle.ViewSprzetTitle_typ}"/>
+                    <h:outputText value="#{bundle.ViewSprzetLabel_marka}"/>
+                    <h:outputText value="#{sprzetController.selected.marka}" title="#{bundle.ViewSprzetTitle_marka}"/>
+                    <h:outputText value="#{bundle.ViewSprzetLabel_parametry}"/>
+                    <h:outputText value="#{sprzetController.selected.parametry}" title="#{bundle.ViewSprzetTitle_parametry}"/>
+                    <h:outputText value="#{bundle.ViewSprzetLabel_stanSprzetu}"/>
+                    <h:outputText value="#{sprzetController.selected.stanSprzetu}" title="#{bundle.ViewSprzetTitle_stanSprzetu}"/>
+                    <h:outputText value="#{bundle.ViewSprzetLabel_model}"/>
+                    <h:outputText value="#{sprzetController.selected.model}" title="#{bundle.ViewSprzetTitle_model}"/>
+                    <h:outputText value="#{bundle.ViewSprzetLabel_idLokalizacji}"/>
+                    <h:outputText value="#{sprzetController.selected.idLokalizacji}" title="#{bundle.ViewSprzetTitle_idLokalizacji}"/>
+                    <h:outputText value="#{bundle.ViewSprzetLabel_idOsoby}"/>
+                    <h:outputText value="#{sprzetController.selected.idOsoby}" title="#{bundle.ViewSprzetTitle_idOsoby}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sprzetController.destroyAndView}" value="#{bundle.ViewSprzetDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSprzetEditLink}"/>
+                <br />
+                <h:commandLink action="#{sprzetController.prepareCreate}" value="#{bundle.ViewSprzetCreateLink}" />
+                <br />
+                <h:commandLink action="#{sprzetController.prepareList}" value="#{bundle.ViewSprzetShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSprzetIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

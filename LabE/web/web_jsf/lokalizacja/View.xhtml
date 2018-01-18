@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLokalizacjaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLokalizacjaLabel_idLokalizacja}"/>
+                    <h:outputText value="#{lokalizacjaController.selected.idLokalizacja}" title="#{bundle.ViewLokalizacjaTitle_idLokalizacja}"/>
+                    <h:outputText value="#{bundle.ViewLokalizacjaLabel_miasto}"/>
+                    <h:outputText value="#{lokalizacjaController.selected.miasto}" title="#{bundle.ViewLokalizacjaTitle_miasto}"/>
+                    <h:outputText value="#{bundle.ViewLokalizacjaLabel_kodPocztowy}"/>
+                    <h:outputText value="#{lokalizacjaController.selected.kodPocztowy}" title="#{bundle.ViewLokalizacjaTitle_kodPocztowy}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{lokalizacjaController.destroyAndView}" value="#{bundle.ViewLokalizacjaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLokalizacjaEditLink}"/>
+                <br />
+                <h:commandLink action="#{lokalizacjaController.prepareCreate}" value="#{bundle.ViewLokalizacjaCreateLink}" />
+                <br />
+                <h:commandLink action="#{lokalizacjaController.prepareList}" value="#{bundle.ViewLokalizacjaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLokalizacjaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
