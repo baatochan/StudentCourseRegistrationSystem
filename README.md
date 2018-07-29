@@ -1,5 +1,5 @@
 # Student Course Registration System
-Basic Student Course Registration System coded in Java with UML model as a project for software engineering (inżynieria oprogramowania) course at the University.
+Basic Student Course Registration System written in Java with UML model as a project for Software Engineering (Inżynieria Oprogramowania) course at the university.
 
 Authors: [Pawel Biel][Github pako535], Bartosz Rodziewicz
 
